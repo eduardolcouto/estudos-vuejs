@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <title>Code Contas</title>
+</head>
+<body id="app">
+  <div class="container">
+    <h1>{{ title }}</h1>
+    <h3 :class="{'text-muted': count < 0, 'text-success': count==0, 'text-danger': count > 0}">
+      {{ status }}
+    </h3>
+    <nav>
+      <ul v-for="o in  menus">
+        <li v-if="this.activedView != o.id">
+          <a href="javascript:void(0)" v-on:click="showView(o.id)" :class="{'btn btn-primary':o.id == 0, 'btn btn-success': o.id == 1}">{{o.name}}</a>
+        </li>
+      </ul>
+    </nav>
+    <div v-if="activedView == 0">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Date</th>
+            <th>Descripton</th>
+            <th>Value</th>
+            <th>Done?</th>
+            <th>Ação</th>
+          </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(index, bill) in bills">
+              <td>{{index}}</td>
+              <td>{{bill.date_due}}</td>
+              <td>{{bill.name}}</td>
+              <td>{{bill.value | currency 'R$ '}}</td>
+              <td :class="{'bg-success': bill.done, 'bg-danger': !bill.done}">
+                {{bill.done | doneLabel }}
+              </td>
+              <td>
+                <a href="#" @click.prevent="loadBill(bill)" class="btn-sm btn-warning">Editar</a>
+                <a href="#" @click.prevent="removeBill(index)" class="btn-sm btn-danger">Remover</a>
+              </td>
+            </tr>
+          </tbody>
+
+      </table>
+
+    </div>
+    <div v-if="activedView == 1">
+      <h3>Criar Conta</h3>
+      <form name="form" @submit.prevent="submit">
+        <div class="form-group">
+          <label for="vencimento">Vencimento:</label>
+            <input name="vencimento" type="text" v-model="bill.date_due" class="form-control">
+          <label for="names">Nome</label>
+            <select name="nomes" v-model="bill.name" class="form-control">
+              <option v-for="o in names" value="{{o}}">{{o}}</option>
+            </select>
+          <label for="valor">Valor</label>
+            <input name="valor" type="text" v-model="bill.value" class="form-control">
+          <label for="status">Paga:</label>
+          <input type="checkbox" v-model="bill.done">
+          <br>
+          <input type="submit" value="Enviar">
+        </div>
+      </form>
+    </div>
+
+  </div>
+
+  <script type="text/javascript" src="node_modules/vue/dist/vue.min.js">
+  </script>
+  <script  type="text/javascript" src="app.js"></script>
+</body>
+</html>
