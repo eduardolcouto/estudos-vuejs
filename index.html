@@ -10,8 +10,8 @@
 <body id="app">
   <div class="container">
     <h1>{{ title }}</h1>
-    <h3 :class="{'text-muted': count < 0, 'text-success': count==0, 'text-danger': count > 0}">
-      {{ status }}
+    <h3 :class="{'text-muted': status === false, 'text-success': status === 0, 'text-danger': status > 0}">
+      {{ status | statusGeneral}}
     </h3>
     <nav>
       <ul v-for="o in  menus">
@@ -43,7 +43,7 @@
               </td>
               <td>
                 <a href="#" @click.prevent="loadBill(bill)" class="btn-sm btn-warning">Editar</a>
-                <a href="#" @click.prevent="removeBill(index)" class="btn-sm btn-danger">Remover</a>
+                <a href="#" @click.prevent="removeBill(index, bill)" class="btn-sm btn-danger">Remover</a>
               </td>
             </tr>
           </tbody>
