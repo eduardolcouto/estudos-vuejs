@@ -36,9 +36,9 @@ var menuComponent = Vue.extend({
   methods:{
     showView: function(id){
       if(id == 1){
-        this.$parent.formType = 'insert';
+        this.$dispatch('change-formtype','insert');
       }
-      this.$parent.activedView = id;
+      this.$dispatch('change-activedview',id);
     },
   }
 });
@@ -86,9 +86,9 @@ var billListComponent = Vue.extend({
   },
   methods:{
     loadBill: function(bill){
-      this.$parent.bill = bill;
-      this.$parent.activedView = 1;
-      this.$parent.formType = 'update';
+      this.$dispatch('change-bill', bill);
+      this.$dispatch('change-activedview',1);
+      this.$dispatch('change-formtype','update');
     },
     removeBill: function(index,bill){
       var remove = confirm("Deseja realmente excluir a conta?");
@@ -96,6 +96,11 @@ var billListComponent = Vue.extend({
         //this.bills.splice(index,1);
         this.bills.$remove(bill);
       }
+    }
+  },
+  events:{
+    'new-bill': function(bill){
+      this.bills.push(bill);
     }
   }
 });
@@ -120,10 +125,6 @@ var billCreateComponent = Vue.extend({
         </div>
       </form>
   `,
-  props:[
-    'bill',
-    'formType'
-  ],
   data:function(){
     return {
       names:[
@@ -132,12 +133,19 @@ var billCreateComponent = Vue.extend({
         'Agua',
         'Telefone',
       ],
+      formType: 'insert',
+      bill:{
+        date_due: '',
+        name: '',
+        value: 0,
+        done: 0
+      },
     }
   },
   methods:{
     submit: function(){
         if(this.formType == 'insert'){
-            this.bills.push(this.bill);
+            this.$dispatch('new-bill', this.bill);
         }
         this.bill = {
           date_due: '',
@@ -145,9 +153,17 @@ var billCreateComponent = Vue.extend({
           value: 0,
           done: 0
         } ;
-        this.$parent.activedView = 0;
+        this.$dispatch('change-activedview',0);
       }
-}
+    },
+    events:{
+      'change-formtype': function(formType){
+        this.formType = formType;
+      },
+      'change-bill': function(bill){
+        this.bill = bill;
+      }
+    }
 
 });
 
@@ -163,42 +179,50 @@ var appComponent = Vue.extend({
                   {{ status | statusGeneral}}
                 </h3>
                 <menu-component v-bind:actived-view="activedView"></menu-component>
-                <div v-if="activedView == 0">
-                  <bill-list-component></bill-list-component>
+                <div v-show="activedView == 0">
+                  <bill-list-component v-ref:bill-list-component></bill-list-component>
                 </div>
-                <div v-if="activedView == 1">
-                  <bill-create-component v-bind:bill="bill" v-bind:form-type="formType"></bill-create-component>
+                <div v-show="activedView == 1">
+                  <bill-create-component></bill-create-component>
                 </div>
               </div>`,
     data:function(){
         return {
             title: 'Contas a pagar',
-            bill:{
-              date_due: '',
-              name: '',
-              value: 0,
-              done: 0
-            },
             activedView: 0,
-            formType: 'insert',
             count: 0,
       };
     },
     computed:{
       status: function(){
         var count = 0;
-        if(this.bills.length == 0){
+        var billListComponent = this.$refs.billListComponent;
+        if(billListComponent.bills.length == 0){
           return false;
         }
-        for(var i in this.bills){
-          if (!this.bills[i].done) {
+        for(var i in billListComponent.bills){
+          if (!billListComponent.bills[i].done) {
             count++;
           }
         }
         return count;
       },
   },
-  methods:{}
+  methods:{},
+  events:{
+    'change-activedview': function(activedView){
+      this.activedView = activedView;
+    },
+    'change-formtype': function(formType){
+      this.$broadcast('change-formtype', formType);
+    },
+    'new-bill': function(bill){
+      this.$broadcast('new-bill',bill);
+    },
+    'change-bill': function(bill){
+      this.$broadcast('change-bill',bill);
+    }
+  }
 });
 Vue.component('app-component', appComponent);
 
