@@ -42,7 +42,6 @@ var menuComponent = Vue.extend({
     },
   }
 });
-Vue.component('menu-component', menuComponent);
 
 var billListComponent = Vue.extend({
   template: `
@@ -101,8 +100,6 @@ var billListComponent = Vue.extend({
   }
 });
 
-Vue.component('bill-list-component', billListComponent);
-
 var billCreateComponent = Vue.extend({
   template:`
       <h3>Criar Conta</h3>
@@ -153,9 +150,13 @@ var billCreateComponent = Vue.extend({
 }
 
 });
-Vue.component('bill-create-component', billCreateComponent);
 
 var appComponent = Vue.extend({
+  components:{
+    'menu-component': menuComponent,
+    'bill-list-component': billListComponent,
+    'bill-create-component': billCreateComponent
+  },
   template: `<div class="container">
                 <h1>{{ title }}</h1>
                 <h3 :class="{'text-muted': status === false, 'text-success': status === 0, 'text-danger': status > 0}">
