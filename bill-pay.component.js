@@ -1,8 +1,6 @@
-window.appComponent = Vue.extend({
+window.billPayComponent = Vue.extend({
   components:{
-    'menu-component': menuComponent,
-    'bill-list-component': billListComponent,
-    'bill-create-component': billCreateComponent
+    'menu-component': billPayMenuComponent,
   },
   template: `<div class="container">
                 <h1>{{ title }}</h1>
@@ -21,23 +19,16 @@ window.appComponent = Vue.extend({
     computed:{
       status: function(){
         var count = 0;
-        var billListComponent = this.$refs.billListComponent;
-        if(billListComponent.bills.length == 0){
+        var billListComponent = this.$root.$children[0];
+        if(billListComponent.billsPay.length == 0){
           return false;
         }
-        for(var i in billListComponent.bills){
-          if (!billListComponent.bills[i].done) {
+        for(var i in billListComponent.billsPay){
+          if (!billListComponent.billsPay[i].done) {
             count++;
           }
         }
         return count;
       },
-  },
-  methods:{},
-  events:{
-    'change-bill': function(bill){
-      this.$broadcast('change-bill',bill);
-    }
   }
 });
-Vue.component('app-component', appComponent);

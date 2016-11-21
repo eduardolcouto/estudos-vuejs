@@ -1,4 +1,4 @@
-window.billListComponent = Vue.extend({
+window.billPayListComponent = Vue.extend({
   template: `
         <table class="table">
           <thead>
@@ -21,7 +21,7 @@ window.billListComponent = Vue.extend({
                   {{bill.done | doneLabel }}
                 </td>
                 <td>
-                  <a href="#" @click.prevent="loadBill(bill)" class="btn-sm btn-warning">Editar</a>
+                  <a v-link="{name: 'bill.update',params: {index:index} }" class="btn-sm btn-warning">Editar</a>
                   <a href="#" @click.prevent="removeBill(index, bill)" class="btn-sm btn-danger">Remover</a>
                 </td>
               </tr>
@@ -31,13 +31,10 @@ window.billListComponent = Vue.extend({
   `,
   data: function(){
     return {
-      bills: this.$root.$children[0].bills
+      bills: this.$root.$children[0].billsPay
     };
   },
   methods:{
-    loadBill: function(bill){
-      this.$dispatch('change-bill', bill);
-    },
     removeBill: function(index,bill){
       var remove = confirm("Deseja realmente excluir a conta?");
       if(remove){

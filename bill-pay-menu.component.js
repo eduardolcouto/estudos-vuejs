@@ -1,4 +1,4 @@
-window.menuComponent = Vue.extend({
+window.billPayMenuComponent = Vue.extend({
   template: `
           <nav>
             <ul v-for="o in menus">
@@ -17,6 +17,5 @@ window.menuComponent = Vue.extend({
         {id:1, name: "Criar Conta", routeName: 'bill.create'},
       ],
     };
-  },
-  methods:{}
+  }
 });

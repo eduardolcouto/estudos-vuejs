@@ -1,4 +1,4 @@
-window.billCreateComponent = Vue.extend({
+window.billPayCreateComponent = Vue.extend({
   template:`
       <h3>Criar Conta</h3>
       <form name="form" @submit.prevent="submit">
@@ -38,7 +38,7 @@ window.billCreateComponent = Vue.extend({
   methods:{
     submit: function(){
         if(this.formType == 'insert'){
-            this.$root.$children[0].bills.push(this.bill);
+            this.$root.$children[0].billsPay.push(this.bill);
         }
         this.bill = {
           date_due: '',
@@ -47,12 +47,16 @@ window.billCreateComponent = Vue.extend({
           done: 0
         };
         this.$router.go({name: 'bill.list'});
+      },
+      getBill: function(index){
+        this.bill = this.$root.$children[0].billsPay[index];
       }
     },
-    events:{
-      'change-bill': function(bill){
-        this.bill = bill;
-      }
+  created: function(){
+    if (this.$route.name == 'bill.update') {
+      this.formType = 'update';
+      this.getBill(this.$route.params.index);
     }
+  },
 
 });
