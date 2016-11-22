@@ -21,7 +21,7 @@ window.billPayListComponent = Vue.extend({
                   {{bill.done | doneLabel }}
                 </td>
                 <td>
-                  <a v-link="{name: 'bill.update',params: {index:index} }" class="btn-sm btn-warning">Editar</a>
+                  <a v-link="{name: 'bill-pay.update',params: {index:index} }" class="btn-sm btn-warning">Editar</a>
                   <a href="#" @click.prevent="removeBill(index, bill)" class="btn-sm btn-danger">Remover</a>
                 </td>
               </tr>
