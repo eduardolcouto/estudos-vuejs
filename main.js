@@ -37,6 +37,10 @@ router.map({
       name: 'bill-receive',
       component: billReceiveComponent
   },
+  '/':{
+    name:'dashboard',
+    component: dashboardComponent
+  },
   '*':{
     component: billPayListComponent
   }
@@ -52,5 +56,5 @@ router.start({
 '#app');
 
 router.redirect({
-  '*': '/bill-pays'
+  '*': '/'
 });
