@@ -13,7 +13,7 @@ window.billPayListComponent = Vue.extend({
             </thead>
             <tbody>
               <tr v-for="(index, bill) in bills">
-                <td>{{index}}</td>
+                <td>{{index+1}}</td>
                 <td>{{bill.date_due}}</td>
                 <td>{{bill.name}}</td>
                 <td>{{bill.value | currency 'R$ '}}</td>
@@ -21,7 +21,7 @@ window.billPayListComponent = Vue.extend({
                   {{bill.done | doneLabel }}
                 </td>
                 <td>
-                  <a v-link="{name: 'bill-pay.update',params: {index:index} }" class="btn-sm btn-warning">Editar</a>
+                  <a v-link="{name: 'bill-pay.update',params: {id:bill.id} }" class="btn-sm btn-warning">Editar</a>
                   <a href="#" @click.prevent="removeBill(index, bill)" class="btn-sm btn-danger">Remover</a>
                 </td>
               </tr>
@@ -29,20 +29,29 @@ window.billPayListComponent = Vue.extend({
 
         </table>
   `,
+  http:{
+    root:'http://127.0.0.1:8888/api',
+  },
   data: function(){
     return {
-      bills: this.$root.$children[0].billsPay
+      bills: []
     };
   },
   methods:{
     removeBill: function(index,bill){
       var remove = confirm("Deseja realmente excluir a conta?");
       if(remove){
-        //this.bills.splice(index,1);
-        this.bills.$remove(bill);
+        this.$http.delete('bills/'+bill.id).then(function(){
+          this.bills.$remove(bill);
+          this.$dispatch('change-status');
+        });
+
       }
     }
   },
-  events:{
+  created: function(){
+    this.$http.get('bills').then(function(response){
+      this.bills = response.data;
+    });
   }
 });
