@@ -7,17 +7,19 @@ window.billPayComponent = Vue.extend({
                 <h3 :class="{'text-muted': status === false, 'text-success': status === 0, 'text-danger': status > 0}">
                   {{ status | statusGeneral}}
                 </h3>
+                <h3>
+                  {{total | currency 'R$ '}}
+                </h3>
                 <menu-component></menu-component>
                 <router-view></router-view>
             </div>`,
-    http:{
-      root:'http://127.0.0.1:8888/api',
-    },
+
     data:function(){
         return {
             title: 'Contas a pagar',
             count: 0,
             status: 0,
+            total: 0,
       };
     },
   methods:{
@@ -34,19 +36,29 @@ window.billPayComponent = Vue.extend({
             this.status = count;
     },
     updateStatus: function(){
-      this.$http.get('bills').then(function(response){
-        this.calculateStatus(response.data);
+      var self = this;
+      Bill.query().then(function(response){
+        self.calculateStatus(response.data);
+      });
+    },
+
+    updateTotal: function(){
+      var self = this;
+      Bill.total().then(function(response){
+        self.total = response.data.total;
       });
     }
   },
 
 created: function() {
     this.updateStatus();
+    this.updateTotal();
  },
 
  events:{
-   'change-status': function(){
+   'change-info': function(){
      this.updateStatus();
+     this.updateTotal();
    }
  }
 });

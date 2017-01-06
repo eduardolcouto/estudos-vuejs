@@ -18,9 +18,6 @@ window.billPayCreateComponent = Vue.extend({
         </div>
       </form>
   `,
-  http:{
-    root:'http://127.0.0.1:8888/api',
-  },
   data:function(){
     return {
       names:[
@@ -40,21 +37,26 @@ window.billPayCreateComponent = Vue.extend({
   },
   methods:{
     submit: function(){
+        var self = this;
+        var resource = this.$resource('bills{/id}');
+
         if(this.formType == 'insert'){
-            this.$http.post('bills',this.bill).then(function(){
-                this.$dispatch('change-status');
-                this.$router.go({name: 'bill-pay.list'});
+          Bill.save({},this.bill).then(function(){
+                self.$dispatch('change-info');
+                self.$router.go({name: 'bill-pay.list'});
               });
         }else{
-          this.$http.put('bills/'+this.bill.id, this.bill).then(function(){
-              this.$dispatch('change-status');
-              this.$router.go({name: 'bill-pay.list'});
+          Bill.update({id: this.bill.id},this.bill).then(function(){
+              self.$dispatch('change-info');
+              self.$router.go({name: 'bill-pay.list'});
             });
         }
       },
       getBill: function(id){
-        this.$http.get('bills/'+id).then(function(response){
-          this.bill = response.data;
+        var self = this;
+        var resource = this.$resource('bills{/id}');
+        Bill.get({id: id}).then(function(response){
+          self.bill = response.data;
         })
       //  this.bill = this.$root.$children[0].billsPay[index];
       }
