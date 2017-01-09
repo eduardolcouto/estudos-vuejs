@@ -1,4 +1,4 @@
-window.billPayListComponent = Vue.extend({
+window.billReceiveListComponent = Vue.extend({
   template: `
         <table class="table">
           <thead>
@@ -39,7 +39,7 @@ window.billPayListComponent = Vue.extend({
       var self = this;
       var remove = confirm("Deseja realmente excluir a conta?");
       if(remove){
-        Bill.delete({id: bill.id}).then(function(){
+        Receive.delete({id: bill.id}).then(function(){
           self.bills.$remove(bill);
           self.$dispatch('change-info');
         });
@@ -49,7 +49,7 @@ window.billPayListComponent = Vue.extend({
   },
   created: function(){
     var self = this;
-    Bill.query().then(function(response){
+    Receive.query().then(function(response){
       self.bills = response.data;
     });
   }

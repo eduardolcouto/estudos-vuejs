@@ -18,17 +18,37 @@ router.map({
         }
       }
   },
-  'bill-receives':{
-      name: 'bill-receive',
-      component: billReceiveComponent
+  //reveive
+
+  '/bill-receives':{
+      component : billReceiveComponent,
+      subRoutes:{
+        '/':{
+          name: 'bill-receive.list',
+          component: billReceiveListComponent
+        },
+        '/create':{
+          name: 'bill-receive.create',
+          component: billReceiveCreateComponent
+        },
+        '/:id/update':{
+          name: 'bill-receive.update',
+          component: billReceiveCreateComponent
+        }
+      }
   },
+
+  //defult
   '/':{
     name:'dashboard',
     component: dashboardComponent
   },
   '*':{
     component: billPayListComponent
-  }
+  },
+
+
+
 
 
 });
