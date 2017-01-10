@@ -18,10 +18,10 @@ window.billReceiveListComponent = Vue.extend({
                 <td>{{bill.name}}</td>
                 <td>{{bill.value | currency 'R$ '}}</td>
                 <td :class="{'bg-success': bill.done, 'bg-danger': !bill.done}">
-                  {{bill.done | doneLabel }}
+                  {{bill.done | doneReceive }}
                 </td>
                 <td>
-                  <a v-link="{name: 'bill-pay.update',params: {id:bill.id} }" class="btn-sm btn-warning">Editar</a>
+                  <a v-link="{name: 'bill-receive.update',params: {id:bill.id} }" class="btn-sm btn-warning">Editar</a>
                   <a href="#" @click.prevent="removeBill(index, bill)" class="btn-sm btn-danger">Remover</a>
                 </td>
               </tr>

@@ -5,7 +5,7 @@ window.billReceiveComponent = Vue.extend({
   template: `<div class="container">
                 <h1>{{ title }}</h1>
                 <h3 :class="{'text-muted': status === false, 'text-success': status === 0, 'text-danger': status > 0}">
-                  {{ status | statusGeneral}}
+                  {{ status | statusGeneralReceive}}
                 </h3>
                 <h3>
                   {{total | currency 'R$ '}}

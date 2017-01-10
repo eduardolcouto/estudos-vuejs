@@ -11,7 +11,7 @@ window.billReceiveCreateComponent = Vue.extend({
             </select>
           <label for="valor">Valor</label>
             <input name="valor" type="text" v-model="bill.value" class="form-control">
-          <label for="status">Paga:</label>
+          <label for="status">Recebida:</label>
           <input type="checkbox" v-model="bill.done">
           <br>
           <input type="submit" value="Enviar">
@@ -38,23 +38,21 @@ window.billReceiveCreateComponent = Vue.extend({
   methods:{
     submit: function(){
         var self = this;
-        var resource = this.$resource('bills{/id}');
 
         if(this.formType == 'insert'){
           Receive.save({},this.bill).then(function(){
                 self.$dispatch('change-info');
-                self.$router.go({name: 'bill-pay.list'});
+                self.$router.go({name: 'bill-receive.list'});
               });
         }else{
           Receive.update({id: this.bill.id},this.bill).then(function(){
               self.$dispatch('change-info');
-              self.$router.go({name: 'bill-pay.list'});
+              self.$router.go({name: 'bill-receive.list'});
             });
         }
       },
       getBill: function(id){
         var self = this;
-        var resource = this.$resource('bills{/id}');
         Receive.get({id: id}).then(function(response){
           self.bill = response.data;
         })
@@ -62,9 +60,9 @@ window.billReceiveCreateComponent = Vue.extend({
       }
     },
   created: function(){
-    if (this.$route.name == 'bill-pay.update') {
+    if (this.$route.name == 'bill-receive.update') {
       this.formType = 'update';
-      this.getBill(this.$route.params.id);
+      this.getBill(this.$route.params.id,'receive');
     }
   },
 

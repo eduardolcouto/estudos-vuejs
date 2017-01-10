@@ -22,7 +22,7 @@ window.billComponent = Vue.extend({
     return {
       menus:[
         {name: "Contas a Pagar", routeName:'bill-pay.list'},
-        {name: "Contas a Receber", routeName: 'bill-receive'},
+        {name: "Contas a Receber", routeName: 'bill-receive.list'},
       ],
     };
   }
