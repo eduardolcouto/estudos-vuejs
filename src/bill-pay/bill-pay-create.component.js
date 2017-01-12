@@ -18,7 +18,7 @@ window.billPayCreateComponent = Vue.extend({
         </div>
       </form>
   `,
-  data:function(){
+  data(){
     return {
       names:[
         'Conta de luz',
@@ -36,32 +36,27 @@ window.billPayCreateComponent = Vue.extend({
     }
   },
   methods:{
-    submit: function(){
-        var self = this;
-        var resource = this.$resource('bills{/id}');
-
+    submit(){
         if(this.formType == 'insert'){
-          Bill.save({},this.bill).then(function(){
-                self.$dispatch('change-info');
-                self.$router.go({name: 'bill-pay.list'});
+          Bill.save({},this.bill).then(() => {
+                this.$dispatch('change-info');
+                this.$router.go({name: 'bill-pay.list'});
               });
         }else{
-          Bill.update({id: this.bill.id},this.bill).then(function(){
-              self.$dispatch('change-info');
-              self.$router.go({name: 'bill-pay.list'});
+          Bill.update({id: this.bill.id},this.bill).then(() => {
+              this.$dispatch('change-info');
+              this.$router.go({name: 'bill-pay.list'});
             });
         }
       },
-      getBill: function(id){
-        var self = this;
-        var resource = this.$resource('bills{/id}');
-        Bill.get({id: id}).then(function(response){
-          self.bill = response.data;
+      getBill(id){
+        Bill.get({id: id}).then((response) => {
+          this.bill = response.data;
         })
       //  this.bill = this.$root.$children[0].billsPay[index];
       }
     },
-  created: function(){
+  created(){
     if (this.$route.name == 'bill-pay.update') {
       this.formType = 'update';
       this.getBill(this.$route.params.id);

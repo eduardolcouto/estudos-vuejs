@@ -1,1 +1,1 @@
-{"bills":[{"id":3,"date_due":"22\/08\/2016","name":"Conta de telefone","value":55.99,"done":true},{"date_due":"receber01","name":"Conta de \u00e1gua","value":"963","done":true,"id":2502}]}
+{"bills":[{"id":3,"date_due":"22\/08\/2016","name":"Conta de telefone","value":55.99,"done":false},{"date_due":"receber01","name":"Conta de \u00e1gua","value":"963","done":true,"id":2502}]}

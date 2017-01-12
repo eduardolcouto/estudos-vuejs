@@ -8,13 +8,13 @@ window.dashboardComponent = Vue.extend({
               </div>
   `,
   computed:{
-      saldo: function(){
-        var saldo = 0;
-        var billListComponent = this.$root.$children[0];
+      saldo(){
+        let saldo = 0;
+        let billListComponent = this.$root.$children[0];
         if(billListComponent.billsPay.length == 0){
           return saldo;
         }
-        for(var i in billListComponent.billsPay){
+        for(let i in billListComponent.billsPay){
             saldo += billListComponent.billsPay[i].value ;
         return saldo;
       }

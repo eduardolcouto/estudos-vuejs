@@ -1,3 +1,4 @@
 node_modules/*
 vue-bills-api/vendor
 .idea/
+npm-debug.log

@@ -29,28 +29,26 @@ window.billReceiveListComponent = Vue.extend({
 
         </table>
   `,
-  data: function(){
+  data(){
     return {
       bills: []
     };
   },
   methods:{
-    removeBill: function(index,bill){
-      var self = this;
-      var remove = confirm("Deseja realmente excluir a conta?");
+    removeBill(index,bill){
+      let remove = confirm("Deseja realmente excluir a conta?");
       if(remove){
-        Receive.delete({id: bill.id}).then(function(){
-          self.bills.$remove(bill);
-          self.$dispatch('change-info');
+        Receive.delete({id: bill.id}).then(() => {
+          this.bills.$remove(bill);
+          this.$dispatch('change-info');
         });
 
       }
     }
   },
-  created: function(){
-    var self = this;
-    Receive.query().then(function(response){
-      self.bills = response.data;
+  created(){
+    Receive.query().then((response) => {
+      this.bills = response.data;
     });
   }
 });
