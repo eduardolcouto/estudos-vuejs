@@ -6,37 +6,36 @@ window.billComponent = Vue.extend({
         </li>
       </ul>
 
-      <div class="navbar-fixed">
-          <nav>
-            <div class="nav-wrapper">
-              <div class="row">
-                <div class="col s12">
-                  <a href="#" class="brand-logo right">Logo</a>
-                  <a href="#" data-activates="nav-mobile" class="button-collapse">
-                    <i class="material-icons">menu</i>
-                  </a>
+     
+     <nav>
+      <div class="nav-wrapper">
+        <div class="row">
+          <div class="col s12">
+            <a href="#" class = "brand-logo right">Logo</a>
+            <a href="#" data-activates="nav-mobile" class="button-collapse">
+              <i class="material-icons">menu</i>
+            </a>
+            <ul  class="left hide-on-med-and-down">
+              <li v-for="o in menus">
+                <a class="dropdown-button" href="!#" v-bind:data-activates="o.dropdonwId">
+                    {{o.name}} <i class="material-icons">arrow_drop_down</i>
+                </a> 
+              </li>
+            </ul>
+  
+            <ul id="nav-mobile" class="side-nav">
+              <li v-for="o in menus">
+                <a class="dropdown-button" v-link="{name: o.routeName}">
+                    {{o.name}}
+                </a> 
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
 
-                  <ul  class="left left hide-on-med-and-down">
-                      <li  v-for="o in menus">
-                        <a v-if="o.dropdonwID" class="dropdown-button" href="!#" v-bind:data-activates="o.dropdonwID">
-                          {{o.name}} <i class="material-icons right">arrow_drop_down</i>
-                        </a>
-                        <a v-else v-link="{name: o.routeName}">{{o.name}}</a>
-                      </li>
-                   </ul>
-
-                  <ul id="nav-mobile" class="side-nav">
-                      <li  v-for="o in menus" >
-                        <a v-link="{name: o.routeName}">{{o.name}}</a>
-                      </li>
-                  </ul>
-
-                 </div>
-               </div>
-            </div>
-          </nav>
-     </div>
-          <router-view></router-view>
+    <router-view></router-view>
   `,
   created(){
     $(document).ready(function(){
@@ -47,20 +46,20 @@ window.billComponent = Vue.extend({
   data(){
     return {
       menus:[
-        {name: "Contas a Pagar", routeName:'bill-pay.list', dropdonwID: 'bill-pay'},
-        {name: "Contas a Receber", routeName: 'bill-receive.list', dropdonwID: 'bill-receive'},
+        {name: 'Contas a Pagar', routeName:'bill-pay.list', dropdonwId: 'bill-pay'},
+        {name: 'Contas a Receber', routeName: 'bill-receive.list', dropdonwId: 'bill-receive'},
       ],
       menusDropDown:[
         {
           id: 'bill-pay', items:[
-            {id:0, name: "Listar Contas", routeName:'bill-pay.list'},
-            {id:1, name: "Criar Conta", routeName: 'bill-pay.create'},
+            {id:0, name: 'Listar Contas', routeName:'bill-pay.list'},
+            {id:1, name: 'Criar Conta', routeName: 'bill-pay.create'},
           ]
         },
         {
           id: 'bill-receive', items:[
-            {id:0, name: "Listar Contas", routeName:'bill-receive.list'},
-            {id:1, name: "Criar Conta", routeName: 'bill-receive.create'},
+            {id:0, name: 'Listar Contas', routeName:'bill-receive.list'},
+            {id:1, name: 'Criar Conta', routeName: 'bill-receive.create'},
           ]
         },
       ],
