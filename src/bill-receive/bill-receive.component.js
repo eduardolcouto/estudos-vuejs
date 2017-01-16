@@ -8,7 +8,7 @@ window.billReceiveComponent = Vue.extend({
                   {{ status | statusGeneralReceive}}
                 </h3>
                 <h3>
-                  {{total | currency 'R$ '}}
+                  {{total | formatNumber}}
                 </h3>
                 <menu-component></menu-component>
                 <router-view></router-view>
