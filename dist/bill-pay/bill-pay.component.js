@@ -4,7 +4,7 @@ window.billPayComponent = Vue.extend({
   components: {
     'menu-component': billPayMenuComponent
   },
-  template: '<div class="container">\n                <h1>{{ title }}</h1>\n                <h3 :class="{\'text-muted\': status === false, \'text-success\': status === 0, \'text-danger\': status > 0}">\n                  {{ status | statusGeneral}}\n                </h3>\n                <h3>\n                  {{total | formatNumber}}\n                </h3>\n                <menu-component></menu-component>\n                <router-view></router-view>\n            </div>',
+  template: '<div>\n                <h1>{{ title }}</h1>\n                <h3 :class="{\'semContasCadastradas\': status === false, \'semContasDevidas\': status === 0, \'comConstasDevidas\': status > 0}">\n                  {{ status | statusGeneral}}\n                </h3>\n                <h3>\n                  {{total | formatNumber}}\n                </h3>\n                <menu-component></menu-component>\n                <router-view></router-view>\n            </div>',
 
   data: function data() {
     return {

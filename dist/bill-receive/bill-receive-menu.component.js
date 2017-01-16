@@ -1,7 +1,7 @@
 "use strict";
 
 window.billReceiveMenuComponent = Vue.extend({
-  template: "\n          <nav>\n            <ul v-for=\"o in menus\">\n              <li >\n                <a v-link=\"{name: o.routeName}\" :class=\"{'btn btn-primary':o.id == 0, 'btn btn-success': o.id == 1}\">{{o.name}}</a>\n              </li>\n            </ul>\n          </nav>\n  ",
+  template: "\n          <nav>\n            <ul v-for=\"o in menus\">\n              <li >\n                <a v-link=\"{name: o.routeName}\" >{{o.name}}</a>\n              </li>\n            </ul>\n          </nav>\n  ",
   data: function data() {
     return {
       menus: [

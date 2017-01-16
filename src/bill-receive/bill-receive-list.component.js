@@ -1,6 +1,6 @@
 window.billReceiveListComponent = Vue.extend({
   template: `
-        <table class="table">
+        <table border = 1 cellpadding=5>
           <thead>
             <tr>
               <th>#</th>
@@ -14,15 +14,15 @@ window.billReceiveListComponent = Vue.extend({
             <tbody>
               <tr v-for="(index, bill) in bills">
                 <td>{{index+1}}</td>
-                <td>{{bill.date_due}}</td>
-                <td>{{bill.name}}</td>
-                <td>{{bill.value | currency 'R$ '}}</td>
-                <td :class="{'bg-success': bill.done, 'bg-danger': !bill.done}">
+                <td>{{bill.date_due | formatDate 'en'}}</td>
+                <td>{{bill.name | formatString}}</td>
+                <td>{{bill.value | formatNumber 'en'}}</td>
+                <td :class="{'pago': bill.done, 'naoPago': !bill.done}">
                   {{bill.done | doneReceive }}
                 </td>
                 <td>
-                  <a v-link="{name: 'bill-receive.update',params: {id:bill.id} }" class="btn-sm btn-warning">Editar</a>
-                  <a href="#" @click.prevent="removeBill(index, bill)" class="btn-sm btn-danger">Remover</a>
+                  <a v-link="{name: 'bill-receive.update',params: {id:bill.id} }" >Editar</a>
+                  <a href="#" @click.prevent="removeBill(index, bill)">Remover</a>
                 </td>
               </tr>
             </tbody>

@@ -36,17 +36,20 @@ Vue.filter('statusGeneralReceive', function (value) {
 
 Vue.filter('formatNumber', {
     read: function read(value) {
+        var lang = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : navigator.language;
+
         var number = 0;
-        if (value && (typeof value === 'undefined' ? 'undefined' : _typeof(value)) != undefined) {
+        var currencyCode = lang == 'pt-BR' ? 'BRL' : 'USD';
+        if (value && (typeof value === 'undefined' ? 'undefined' : _typeof(value)) !== undefined) {
             var numberMatch = value.toString().match(/\d+(\.{1}\d{1,2){0,1}/g);
             number = numberMatch ? numberMatch[0] : number;
         }
 
-        return Intl.NumberFormat('pt-BR', {
+        return Intl.NumberFormat(lang, {
             minimumFractionDigits: 2,
             maximumFractionDigits: 2,
             style: 'currency',
-            currency: 'BRL'
+            currency: currencyCode
         }).format(number);
     },
     write: function write(value) {
@@ -57,5 +60,49 @@ Vue.filter('formatNumber', {
         }
 
         return number;
+    }
+});
+
+Vue.filter('formatDate', {
+    read: function read(value) {
+        var lang = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : navigator.language;
+
+        if (value && (typeof value === 'undefined' ? 'undefined' : _typeof(value)) !== undefined) {
+            if (!(value instanceof Date)) {
+                var dateRegex = value.match(/\d{4}\-\d{2}\-\d{2}/g);
+                var dateString = dateRegex ? dateRegex[0] : dateRegex;
+                if (dateString) {
+                    value = new Date(dateString + "T03:00:00");
+                } else {
+                    return value;
+                }
+            }
+            return new Intl.DateTimeFormat(lang).format(value).split('T')[0];
+        }
+        return value;
+    },
+    write: function write(value) {
+        var dateRegex = value.match(/\d{2}\/\d{2}\/\d{4}/g);
+        if (dateRegex) {
+            var dateString = dateRegex[0];
+            var date = new Date(dateString.split('/').reverse().join('-') + 'T03:00:00');
+            if (!isNaN(date.getTime())) {
+                return date;
+            }
+        }
+        return value;
+    }
+});
+
+Vue.filter('formatString', {
+    read: function read(value) {
+        if (value && (typeof value === 'undefined' ? 'undefined' : _typeof(value)) !== undefined) {
+            return value.toUpperCase();
+        }
+    },
+    write: function write(value) {
+        if (value && (typeof value === 'undefined' ? 'undefined' : _typeof(value)) !== undefined) {
+            return value.toLowerCase();
+        }
     }
 });

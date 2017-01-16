@@ -2,15 +2,15 @@ window.billPayCreateComponent = Vue.extend({
   template:`
       <h3>Criar Conta</h3>
       <form name="form" @submit.prevent="submit">
-        <div class="form-group">
+        <div>
           <label for="vencimento">Vencimento:</label>
-            <input name="vencimento" type="text" v-model="bill.date_due" class="form-control">
+            <input name="vencimento" type="text" v-model="bill.date_due | formatDate">
           <label for="names">Nome</label>
-            <select name="nomes" v-model="bill.name" class="form-control">
+            <select name="nomes" v-model="bill.name | formatString">
               <option v-for="o in names" value="{{o}}">{{o}}</option>
             </select>
           <label for="valor">Valor</label>
-            <input name="valor" type="text" v-model="bill.value | formatNumber" class="form-control">
+            <input name="valor" type="text" v-model="bill.value | formatNumber">
           <label for="status">Paga:</label>
           <input type="checkbox" v-model="bill.done">
           <br>
@@ -21,29 +21,25 @@ window.billPayCreateComponent = Vue.extend({
   data(){
     return {
       names:[
-        'Conta de luz',
-        'Conta de \u00e1gua',
-        'Conta de telefone',
-        'Supermercado',
+        'CONTA DE LUZ',
+        'CONTA DE ÁGUA',
+        'CONTA DE TELEFONE',
+        'SUPERMERCADO',
       ],
       formType: 'insert',
-      bill:{
-        date_due: '',
-        name: '',
-        value: 0,
-        done: 0
-      },
+      bill: new BillClass(),
     }
   },
   methods:{
     submit(){
+        let data = this.bill.toJSON();
         if(this.formType == 'insert'){
-          Bill.save({},this.bill).then(() => {
+          Bill.save({},data).then(() => {
                 this.$dispatch('change-info');
                 this.$router.go({name: 'bill-pay.list'});
               });
         }else{
-          Bill.update({id: this.bill.id},this.bill).then(() => {
+          Bill.update({id: this.bill.id},data).then(() => {
               this.$dispatch('change-info');
               this.$router.go({name: 'bill-pay.list'});
             });
@@ -51,9 +47,8 @@ window.billPayCreateComponent = Vue.extend({
       },
       getBill(id){
         Bill.get({id: id}).then((response) => {
-          this.bill = response.data;
-        })
-      //  this.bill = this.$root.$children[0].billsPay[index];
+          this.bill = new BillClass(response.data);
+        });
       }
     },
   created(){

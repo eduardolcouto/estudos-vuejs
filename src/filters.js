@@ -32,18 +32,19 @@ Vue.filter('statusGeneralReceive', function(value){
 });
 
 Vue.filter('formatNumber',{
-    read(value){
+    read(value, lang = navigator.language){
         let number = 0;
+        let currencyCode = lang == 'pt-BR' ? 'BRL' : 'USD';
         if (value && typeof value !== undefined){
             let numberMatch = value.toString().match(/\d+(\.{1}\d{1,2){0,1}/g);
             number = numberMatch ? numberMatch[0] : number;
         }
 
-        return Intl.NumberFormat('pt-BR',{
+        return Intl.NumberFormat(lang,{
             minimumFractionDigits: 2,
             maximumFractionDigits: 2,
             style: 'currency',
-            currency: 'BRL'
+            currency: currencyCode
         }).format(number);
     },
     write(value){
@@ -59,7 +60,7 @@ Vue.filter('formatNumber',{
 });
 
 Vue.filter('formatDate',{
-    read(value){
+    read(value, lang = navigator.language){
         if(value && typeof value !== undefined){
             if(!(value instanceof Date)){
                 let dateRegex = value.match(/\d{4}\-\d{2}\-\d{2}/g);
@@ -70,7 +71,7 @@ Vue.filter('formatDate',{
                     return value;
                 }
             }
-            return new Intl.DateTimeFormat('pt-BR').format(value).split(' ')[0]
+            return new Intl.DateTimeFormat(lang).format(value).split('T')[0]
         }
         return value;
     },
@@ -85,4 +86,17 @@ Vue.filter('formatDate',{
         }
         return value;
     }
-})
+});
+
+Vue.filter('formatString',{
+  read(value){
+    if(value && typeof value !== undefined){
+        return value.toUpperCase();
+    }
+  },
+  write(value){
+    if(value && typeof value !== undefined){
+      return value.toLowerCase();
+    }
+  }
+});

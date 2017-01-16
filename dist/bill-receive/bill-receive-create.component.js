@@ -1,17 +1,12 @@
 'use strict';
 
 window.billReceiveCreateComponent = Vue.extend({
-  template: '\n      <h3>Criar Conta</h3>\n      <form name="form" @submit.prevent="submit">\n        <div class="form-group">\n          <label for="vencimento">Vencimento:</label>\n            <input name="vencimento" type="text" v-model="bill.date_due" class="form-control">\n          <label for="names">Nome</label>\n            <select name="nomes" v-model="bill.name" class="form-control">\n              <option v-for="o in names" value="{{o}}">{{o}}</option>\n            </select>\n          <label for="valor">Valor</label>\n            <input name="valor" type="text" v-model="bill.value" class="form-control">\n          <label for="status">Recebida:</label>\n          <input type="checkbox" v-model="bill.done">\n          <br>\n          <input type="submit" value="Enviar">\n        </div>\n      </form>\n  ',
+  template: '\n      <h3>Criar Conta</h3>\n      <form name="form" @submit.prevent="submit">\n        <div>\n          <label for="vencimento">Vencimento:</label>\n            <input name="vencimento" type="text" v-model="bill.date_due | formatDate \'en\'">\n          <label for="names">Nome</label>\n            <select name="nomes" v-model="bill.name | formatString">\n              <option v-for="o in names" value="{{o}}">{{o}}</option>\n            </select>\n          <label for="valor">Valor</label>\n            <input name="valor" type="text" v-model="bill.value | formatNumber \'en\'">\n          <label for="status">Recebida:</label>\n          <input type="checkbox" v-model="bill.done">\n          <br>\n          <input type="submit" value="Enviar">\n        </div>\n      </form>\n  ',
   data: function data() {
     return {
-      names: ['Conta de luz', 'Conta de \xE1gua', 'Conta de telefone', 'Supermercado'],
+      names: ['CONTA DE LUZ', 'CONTA DE ÁGUA', 'CONTA DE TELEFONE', 'SUPERMERCADO'],
       formType: 'insert',
-      bill: {
-        date_due: '',
-        name: '',
-        value: 0,
-        done: 0
-      }
+      bill: new BillClass()
     };
   },
 
@@ -19,13 +14,14 @@ window.billReceiveCreateComponent = Vue.extend({
     submit: function submit() {
       var _this = this;
 
+      var data = this.bill.toJSON();
       if (this.formType == 'insert') {
-        Receive.save({}, this.bill).then(function () {
+        Receive.save({}, data).then(function () {
           _this.$dispatch('change-info');
           _this.$router.go({ name: 'bill-receive.list' });
         });
       } else {
-        Receive.update({ id: this.bill.id }, this.bill).then(function () {
+        Receive.update({ id: this.bill.id }, data).then(function () {
           _this.$dispatch('change-info');
           _this.$router.go({ name: 'bill-receive.list' });
         });
@@ -35,9 +31,8 @@ window.billReceiveCreateComponent = Vue.extend({
       var _this2 = this;
 
       Receive.get({ id: id }).then(function (response) {
-        _this2.bill = response.data;
+        _this2.bill = new BillClass(response.data);
       });
-      //  this.bill = this.$root.$children[0].billsPay[index];
     }
   },
   created: function created() {

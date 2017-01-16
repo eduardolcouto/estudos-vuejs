@@ -3,7 +3,7 @@ window.billPayMenuComponent = Vue.extend({
           <nav>
             <ul v-for="o in menus">
               <li >
-                <a v-link="{name: o.routeName}" :class="{'btn btn-primary':o.id == 0, 'btn btn-success': o.id == 1}">{{o.name}}</a>
+                <a v-link="{name: o.routeName}" >{{o.name}}</a>
               </li>
             </ul>
           </nav>
