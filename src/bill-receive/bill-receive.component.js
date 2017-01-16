@@ -10,7 +10,7 @@ window.billReceiveComponent = Vue.extend({
                 <h3>
                   {{total | formatNumber}}
                 </h3>
-                <menu-component></menu-component>
+                
                 <router-view></router-view>
             </div>`,
 

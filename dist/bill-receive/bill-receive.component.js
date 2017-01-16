@@ -4,7 +4,7 @@ window.billReceiveComponent = Vue.extend({
   components: {
     'menu-component': billReceiveMenuComponent
   },
-  template: '<div>\n                <h1>{{ title }}</h1>\n                <h3 :class="{\'semContasCadastradas\': status === false, \'semContasDevidas\': status === 0, \'comConstasDevidas\': status > 0}">\n                  {{ status | statusGeneralReceive}}\n                </h3>\n                <h3>\n                  {{total | formatNumber}}\n                </h3>\n                <menu-component></menu-component>\n                <router-view></router-view>\n            </div>',
+  template: '<div>\n                <h1>{{ title }}</h1>\n                <h3 :class="{\'semContasCadastradas\': status === false, \'semContasDevidas\': status === 0, \'comConstasDevidas\': status > 0}">\n                  {{ status | statusGeneralReceive}}\n                </h3>\n                <h3>\n                  {{total | formatNumber}}\n                </h3>\n                \n                <router-view></router-view>\n            </div>',
 
   data: function data() {
     return {
