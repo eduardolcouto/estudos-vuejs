@@ -12,10 +12,10 @@ window.billPayComponent = Vue.extend({
                                 <p >
                                   {{ status | statusGeneral}}
                                 </p>
-                             </div> 
+                             </div>
                          </div>
                      </div>
-        
+
                     <div class="col s6">
                         <div class="card ">
                             <div class="card-content">
@@ -23,13 +23,11 @@ window.billPayComponent = Vue.extend({
                                 <p>
                                     {{total | formatNumber}}
                                  </p>
-                            </div> 
+                            </div>
                         </div>
                      </div>
                 </div>
-                
-                
-              
+            </div>
                 <router-view></router-view>
             `,
 

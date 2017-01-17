@@ -1,6 +1,7 @@
 window.billReceiveListComponent = Vue.extend({
   template: `
-        <table border = 1 cellpadding=5>
+      <div class="container">
+        <table>
           <thead>
             <tr>
               <th>#</th>
@@ -26,8 +27,8 @@ window.billReceiveListComponent = Vue.extend({
                 </td>
               </tr>
             </tbody>
-
         </table>
+        </div>
   `,
   data(){
     return {
