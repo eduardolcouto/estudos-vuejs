@@ -14,7 +14,7 @@ window.billPayCreateComponent = Vue.extend({
             <input id="valor" name="valor" type="text" v-model="bill.value | formatNumber">
           </div>
         </div><!-- row -->
-        
+
         <div class="row">
           <div class="col s6">
             <label for="nomes" class="active">Nome</label>
@@ -75,6 +75,10 @@ window.billPayCreateComponent = Vue.extend({
       this.formType = 'update';
       this.getBill(this.$route.params.id);
     }
+
+    $(document).ready(()=>{
+
+    })
   },
 
 });

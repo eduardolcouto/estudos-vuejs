@@ -8,7 +8,7 @@ window.billPayComponent = Vue.extend({
       <h4>{{ title }}</h4>
       <div class="row">
           <div class="col s6">
-              <div class="card" :class="{'white black-text': status === false, 'green white-text': status === 0, 'red white-text ': status > 0}">
+              <div class="card hoverable" :class="{'white black-text': status === false, 'green white-text': status === 0, 'red white-text ': status > 0}">
                   <div class="card-content">
                       <span class="card-title"><i class="material-icons">account_balance</i></span>
                       <h5>
@@ -19,7 +19,7 @@ window.billPayComponent = Vue.extend({
            </div>
 
           <div class="col s6">
-              <div class="card ">
+              <div class="card hoverable">
                   <div class="card-content">
                   <span class="card-title"><i class="material-icons">payment</i></span>
                       <h5>

@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "babel": "babel src --out-dir dist -w"
+    "babel": "babel src/js --out-dir dist/js -w",
+    "sass": "node-sass ./src/sass -o ./dist/css",
+    "sass:w": "node-sass ./src/sass -o ./dist/css -w",
+    "start": "concurrently \"npm run sass\" \"npm run sass:w\" \"npm run babel\" \"lite-server\""
   },
   "author": "",
   "license": "ISC",
