@@ -5,40 +5,63 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="node_modules/materialize-css/dist/css/materialize.min.css">
+  <link rel="stylesheet" href="dist/css/app.css">
 
   <title>Code Contas</title>
 </head>
 <body>
 
-  <nav>
-    <div class="nav-wrapper">
-      <div class="row">
-        <div class="col s12">
-          <a href="#" data-activates="nav-mobile" class="button-collapse">
-            <i class="material-icons">menu</i>
-          </a>
-          <ul  class="left hide-on-med-and-down">
-            <li>
-              <a href="#">Menu1 <i class="material-icons tiny">arrow_drop_down</i></a>
-            </li>
-            <li>
-              <a href="#">Menu2 <i class="material-icons tiny">arrow_drop_down</i></a> 
-            </li>
-          </ul>
-
-          <ul id="nav-mobile" class="side-nav">
-            <li>
-              <a href="#">Menu1</a>
-            </li>
-            <li>
-              <a href="#">Menu2</a>
-            </li>
-          </ul>
+    <header>
+      <nav class="top-nav">
+        <div class="container">
+          <div class="nav-wrapper">
+            <a class="page-title">Controle Financeiro</a>
+          </div>
+          <div class="container">
+            <a href="#" data-activates="nav-mobile" class="button-collapse full hide-on-large-only">
+              <i class="material-icons">menu</i>
+            </a>
+          </div>
         </div>
+      </nav>
+
+    <ul id="nav-mobile" class="side-nav fixed">
+      <li>
+        <div class="userView">
+          <div class="background">
+            <img src="dist/img/bg.jpg">
+          </div>
+          <a href="#!user"><img class="circle" src="http://www.gravatar.com/avatar/d82d96deac93f5fa1fb48cb4b3c75961.jpg"></a>
+          <a href="#!name"><span class="white-text name">Eduardo Couto</span></a>
+          <a href="#!email"><span class="white-text email">eduardo.lcouto@gmail.com</span></a>
+        </div>
+      </li>
+      <li>
+        <ul class="collapsible" data-collapsible="accordion">
+          <li class="red lighten-2">
+            <div class="collapsible-header"><i class="material-icons">call_received</i>Contas a Pagar</div>
+            <div class="collapsible-body"><a href="">Listar Contas</a></div>
+            <div class="collapsible-body"><a href="">Criar Contas</a></div>
+          </li>
+          <li class="green lighten-2">
+            <div class="collapsible-header"><i class="material-icons">call_made</i>Contas a Receber</div>
+            <div class="collapsible-body"><a href="">Listar Contas</a></div>
+            <div class="collapsible-body"><a href="">Criar Contas</a></div>
+          </li>
+          <li>
+            <div class="collapsible-header"><i class="material-icons">assessment</i>Relatório</div>
+            <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </header>
+  <main>
+      <div class="container">
+        <router-view></router-view>
       </div>
-    </div>
-  </nav>
+  </main>
+
 
   <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
   <script src="node_modules/materialize-css/dist/js/materialize.min.js"></script>

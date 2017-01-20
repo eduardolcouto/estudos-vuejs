@@ -1,13 +1,15 @@
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
 
 @import "node_modules/materialize-css/sass/components/color";
-@import "node_modules/materialize-css/sass/components/modal";
-
 @import "variables";
 
 @import "node_modules/materialize-css/sass/materialize";
 
+@import "node_modules/materialize-css/sass/components/modal";
+@import "node_modules/materialize-css/sass/components/navbar";
 
+
+//minhas classes
 .modal-cst{
   @extend .modal;
   max-height: 45%;
@@ -15,4 +17,18 @@
 
 .btn-flat-cst{
   @extend .btn-flat, .purple, .lighten-3;
+}
+
+.top-nav{
+  @extend nav;
+  height: 127px;
+}
+header, main, footer{
+  padding-left: 140px;
+}
+
+.page-title{
+  @extend .brand-logo;
+  margin-top: 28px;
+  font-size: 15px;
 }
