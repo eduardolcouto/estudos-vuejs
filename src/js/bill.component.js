@@ -7,7 +7,7 @@ window.billComponent = Vue.extend({
 </ul>
 
 <div class="navbar-fixed">
-  <nav class="">
+  <nav>
     <div class="nav-wrapper">
       <div class="row">
         <div class="col s12">

@@ -1,2 +1,18 @@
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+
+@import "node_modules/materialize-css/sass/components/color";
+@import "node_modules/materialize-css/sass/components/modal";
+
+@import "variables";
+
 @import "node_modules/materialize-css/sass/materialize";
+
+
+.modal-cst{
+  @extend .modal;
+  max-height: 45%;
+}
+
+.btn-flat-cst{
+  @extend .btn-flat, .purple, .lighten-3;
+}

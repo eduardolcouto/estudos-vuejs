@@ -32,7 +32,7 @@ window.billPayListComponent = Vue.extend({
                     <a v-link="{name: 'bill-pay.update',params: {id:bill.id} }" class="btn waves-effect btn-flat teal lighten-2">
                       <i class="material-icons white-text">edit</i>
                     </a>
-                    <a href="#" @click.prevent="modalDelete(bill)" class="btn waves-effect btn-flat red lighten-2">
+                    <a href="#" @click.prevent="modalDelete(bill)" class="btn waves-effect btn-flat-cst">
                       <i class="material-icons white-text">delete</i>
                     </a>
                   </td>
