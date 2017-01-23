@@ -1,7 +1,7 @@
 window.modalComponent = Vue.extend({
   template: `
 <!-- Modal Structure -->
-<div :id="modal.id" class="modal-cst">
+<div :id="modal.id" class="modal">
   <div class="modal-content">
     <slot name="content"></slot>
   </div>

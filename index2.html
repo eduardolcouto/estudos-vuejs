@@ -38,29 +38,179 @@
       </li>
       <li>
         <ul class="collapsible" data-collapsible="accordion">
-          <li class="red lighten-2">
-            <div class="collapsible-header"><i class="material-icons">call_received</i>Contas a Pagar</div>
-            <div class="collapsible-body"><a href="">Listar Contas</a></div>
-            <div class="collapsible-body"><a href="">Criar Contas</a></div>
+          <li v-for="menu in menuSideNav">
+            <div class="collapsible-header"><i class="material-icons">call_received</i>{{menu.name}}</div>
+
+            <div class="collapsible-body"  v-for="subMenu in menu.subMenu">
+              <a v-link="{name: subMenu.routeName}"> {{subMenu.name}} </a>
+            </ul>
+
           </li>
-          <li class="green lighten-2">
+          <!--<li class="green lighten-2">
             <div class="collapsible-header"><i class="material-icons">call_made</i>Contas a Receber</div>
             <div class="collapsible-body"><a href="">Listar Contas</a></div>
             <div class="collapsible-body"><a href="">Criar Contas</a></div>
-          </li>
+          </li> -->
           <li>
             <div class="collapsible-header"><i class="material-icons">assessment</i>Relatório</div>
             <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
           </li>
         </ul>
-      </li>
+      </li>wo
     </ul>
   </header>
   <main>
-      <div class="container">
-        <router-view></router-view>
+  <div class="">
+    <div class="section">
+  <div class="container">
+      <h4>Contas a pagar</h4>
+      <div class="row">
+          <div class="col s6">
+              <div class="card hoverable red white-text">
+                  <div class="card-content">
+                      <span class="card-title"><i class="material-icons">account_balance</i></span>
+                      <h5>
+                        2 contas a pagar!
+                      </h5>
+                   </div>
+               </div>
+           </div>
+
+          <div class="col s6">
+              <div class="card hoverable">
+                  <div class="card-content">
+                  <span class="card-title"><i class="material-icons">payment</i></span>
+                      <h5>
+                          R$28.673,00
+                       </h5>
+                  </div>
+              </div>
+           </div>
       </div>
-  </main>
+  </div>
+</div>
+<div class="divider"></div>
+    <div class="section">
+    <div class="container">
+      <div class="row">
+        <div class="col s12">
+          <table class="bordered highlight responsive-table z-depth-3">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Date</th>
+                <th>Descripton</th>
+                <th>Value</th>
+                <th>Done?</th>
+                <th>Ação</th>
+              </tr>
+              </thead>
+              <tbody>
+                <tr class="hoverable">
+                  <td>1</td>
+                  <td>16/01/2017</td>
+                  <td>CONTA DE ÁGUA</td>
+                  <td>R$265,00</td>
+                  <td class="white-text center-align green lighten-2">
+                    Paga
+
+                  </td>
+                  <td>
+                    <a class="btn waves-effect btn-flat teal lighten-2" href="#!/bill-pays/60782/update">
+                      <i class="material-icons white-text">edit</i>
+                    </a>
+                    <a href="#" class="btn waves-effect btn-flat-cst">
+                      <i class="material-icons white-text">delete</i>
+                    </a>
+                  </td>
+                </tr><tr class="hoverable">
+                  <td>2</td>
+                  <td>01/12/2018</td>
+                  <td>CONTA DE ÁGUA</td>
+                  <td>R$1.523,00</td>
+                  <td class="white-text center-align red lighten-2">
+                    Não Paga
+
+                  </td>
+                  <td>
+                    <a class="btn waves-effect btn-flat teal lighten-2" href="#!/bill-pays/95507/update">
+                      <i class="material-icons white-text">edit</i>
+                    </a>
+                    <a href="#" class="btn waves-effect btn-flat-cst">
+                      <i class="material-icons white-text">delete</i>
+                    </a>
+                  </td>
+                </tr><tr class="hoverable">
+                  <td>3</td>
+                  <td>26/05/2015</td>
+                  <td>CONTA DE TELEFONE</td>
+                  <td>R$1.253,00</td>
+                  <td class="white-text center-align green lighten-2">
+                    Paga
+
+                  </td>
+                  <td>
+                    <a class="btn waves-effect btn-flat teal lighten-2" href="#!/bill-pays/8426/update">
+                      <i class="material-icons white-text">edit</i>
+                    </a>
+                    <a href="#" class="btn waves-effect btn-flat-cst">
+                      <i class="material-icons white-text">delete</i>
+                    </a>
+                  </td>
+                </tr><tr class="hoverable">
+                  <td>4</td>
+                  <td>12/12/2016</td>
+                  <td>CONTA DE TELEFONE</td>
+                  <td>R$25.632,00</td>
+                  <td class="white-text center-align red lighten-2">
+                    Não Paga
+
+                  </td>
+                  <td>
+                    <a class="btn waves-effect btn-flat teal lighten-2" href="#!/bill-pays/66464/update">
+                      <i class="material-icons white-text">edit</i>
+                    </a>
+                    <a href="#" class="btn waves-effect btn-flat-cst">
+                      <i class="material-icons white-text">delete</i>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div><!-- col s12-->
+        </div><!-- row-->
+        <div class="fixed-action-btn">
+          <a class="btn-floating btn-large waves-effect waves-light red hide-on-small-only " href="#!/bill-pays/create"><i class="material-icons">add</i></a>
+          <a class="btn-floating btn-small waves-effect waves-light red hide-on-med-and-up" href="#!/bill-pays/create"><i class="material-icons">add</i></a>
+        </div> <!-- fixed-action-btn-->
+    </div><!-- container-->
+  </div><!-- section-->
+
+  <div class="modal" modal="modal-delete" id="">
+  <div class="modal-content">
+    <div slot="content">
+      <div class="section"><h4>Confirmação de exclusão</h4>
+        <p>
+          <strong>Tem certeza que deseja excluir essa conta?</strong>
+        </p>
+      </div>
+      <div class="divider"></div>
+      <div class="section">
+        <p>Name: <strong></strong></p>
+        <p>Value: <strong>R$0,00</strong></p>
+        <p>Date Due: <strong></strong></p>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div slot="footer">
+      <button class="btn btn-flat waves-effect grey lighten-2 waves-red modal-close modal-action ">NÃO</button>
+      <button class="btn btn-flat waves-effect orange lighten-2 modal-close modal-action ">SIM</button>
+    </div>
+  </div>
+</div>
+  </div>
+</main>
 
 
   <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>

@@ -5,12 +5,14 @@
 
 @import "node_modules/materialize-css/sass/materialize";
 
-@import "node_modules/materialize-css/sass/components/modal";
-@import "node_modules/materialize-css/sass/components/navbar";
 
+//customs
+#sidenav-overlay {
+   z-index: 996 !important;
+}
 
 //minhas classes
-.modal-cst{
+.modal{
   @extend .modal;
   max-height: 45%;
 }
@@ -24,7 +26,7 @@
   height: 127px;
 }
 header, main, footer{
-  padding-left: 140px;
+  //padding-left: 140px;
 }
 
 .page-title{

@@ -43,7 +43,7 @@ window.billPayListComponent = Vue.extend({
         </div><!-- row-->
         <div class="fixed-action-btn">
           <a v-link="{name: 'bill-pay.create'}" class="btn-floating btn-large waves-effect waves-light red hide-on-small-only "><i class="material-icons">add</i></a>
-          <a v-link="{name: 'bill-pay.create'}"" class="btn-floating btn-small waves-effect waves-light red hide-on-med-and-up"><i class="material-icons">add</i></a>
+          <a v-link="{name: 'bill-pay.create'}" class="btn-floating btn-small waves-effect waves-light red hide-on-med-and-up"><i class="material-icons">add</i></a>
         </div> <!-- fixed-action-btn-->
     </div><!-- container-->
   </div><!-- section-->
