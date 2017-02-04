@@ -11,7 +11,18 @@
    z-index: 996 !important;
 }
 
-//minhas classes
+
+//elements
+header, main, footer {
+      padding-left: 300px;
+    }
+
+@media only screen and (max-width : 992px) {
+  header, main, footer {
+    padding-left: 0;
+  }
+}
+//classes
 .modal{
   @extend .modal;
   max-height: 45%;
@@ -25,12 +36,10 @@
   @extend nav;
   height: 127px;
 }
-header, main, footer{
-  //padding-left: 140px;
-}
 
 .page-title{
   @extend .brand-logo;
   margin-top: 28px;
   font-size: 15px;
+  margin-left: 10px;
 }
