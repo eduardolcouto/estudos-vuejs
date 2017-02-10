@@ -1,7 +1,4 @@
-window.billReceiveComponent = Vue.extend({
-  components:{
-    'menu-component': billReceiveMenuComponent,
-  },
+module.exports = {
   template: `
   <div class="section">
     <div class="container">
@@ -81,4 +78,4 @@ created() {
      this.updateTotal();
    }
  }
-});
+};

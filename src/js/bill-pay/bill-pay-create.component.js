@@ -1,4 +1,4 @@
-window.billPayCreateComponent = Vue.extend({
+module.exports = {
   template:`
 <div class="container">
       <h4 v-if="formType == 'insert'">Criar Conta</h4>
@@ -81,4 +81,4 @@ window.billPayCreateComponent = Vue.extend({
     })
   },
 
-});
+};

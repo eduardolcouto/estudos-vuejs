@@ -1,4 +1,4 @@
-window.dashboardComponent = Vue.extend({
+module.exports = {
   template: `
               <div class="container-fluid">
               <div class="well">
@@ -20,4 +20,4 @@ window.dashboardComponent = Vue.extend({
       }
   }
 }
-});
+};

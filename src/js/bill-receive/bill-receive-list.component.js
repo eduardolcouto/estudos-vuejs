@@ -1,6 +1,8 @@
-window.billReceiveListComponent = Vue.extend({
+let modalComponent = require('../modal.component');
+
+module.exports = {
   components:{
-    'modal' : window.modalComponent,
+    'modal' : modalComponent,
   },
   template: `
   <div class="section"> <!-- List COmponente -->
@@ -99,4 +101,4 @@ window.billReceiveListComponent = Vue.extend({
       this.bills = response.data;
     });
   }
-});
+};

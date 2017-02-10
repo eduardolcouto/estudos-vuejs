@@ -21,7 +21,6 @@ class BillClass{
     if(!(date instanceof Date)){
         date = new Date(date);
     }
-
     return date;
   }
 }

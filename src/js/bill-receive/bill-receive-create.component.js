@@ -1,4 +1,4 @@
-window.billReceiveCreateComponent = Vue.extend({
+module.exports = {
   template:`
 
   <div class="container">
@@ -77,4 +77,4 @@ window.billReceiveCreateComponent = Vue.extend({
     }
   },
 
-});
+};
