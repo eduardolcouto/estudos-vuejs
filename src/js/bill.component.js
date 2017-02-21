@@ -92,6 +92,7 @@ module.exports = {
           dropdonwId: 'bill-pay',
           icon: 'call_made' ,
           colorBase: 'red darken-1',
+            active:  '',
           subMenu:[
             {id:0, name: 'Listar Contas', routeName:'bill-pay.list'},
             {id:1, name: 'Criar Conta', routeName: 'bill-pay.create'}
@@ -102,6 +103,7 @@ module.exports = {
           dropdonwId: 'bill-receive',
           icon: 'call_received' ,
           colorBase: 'green lighten-2',
+            active: 'active',
           subMenu:[
             {id:0, name: 'Listar Contas', routeName:'bill-receive.list'},
             {id:1, name: 'Criar Conta', routeName: 'bill-receive.create'},

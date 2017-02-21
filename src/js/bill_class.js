@@ -1,4 +1,4 @@
-class BillClass{
+export class BillClass{
   constructor(data = {}){
     this.date_due = '';
     this.name = '';
@@ -6,7 +6,7 @@ class BillClass{
     this.done = false;
 
     Object.assign(this,data);
-  };
+  }
 
   toJSON(){
     console.log(this.date_due);
@@ -16,7 +16,8 @@ class BillClass{
       value: this.value,
       done: this.done
     }
-  };
+  }
+
   getDateDue(date){
     if(!(date instanceof Date)){
         date = new Date(date);
