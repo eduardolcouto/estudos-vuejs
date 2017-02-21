@@ -182,7 +182,6 @@ var BillClass = function () {
       if (!(date instanceof Date)) {
         date = new Date(date);
       }
-
       return date;
     }
   }]);

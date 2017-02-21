@@ -3,8 +3,7 @@ require('./filters');
 require('./resources');
 
 require(
-    [
-        './bill-pay/bill-pay.component',
+    [   './bill-pay/bill-pay.component',
         './bill-pay/bill-pay-list.component',
         './bill-pay/bill-pay-create.component',
         './bill-receive/bill-receive.component',
