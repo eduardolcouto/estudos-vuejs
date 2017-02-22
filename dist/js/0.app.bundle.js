@@ -1,12 +1,13 @@
 webpackJsonp([0],[
 /* 0 */,
 /* 1 */,
-/* 2 */,
-/* 3 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
+
+var BillClass = __webpack_require__(11).default;
 
 module.exports = {
   template: '\n<div class="container">\n      <h4 v-if="formType == \'insert\'">Criar Conta</h4>\n      <h4 v-else>Editar Conta</h4>\n      <form name="form" @submit.prevent="submit">\n        <div class="row">\n          <div class="input-field col s6">\n            <label for="vencimento" class="active">Vencimento</label>\n            <input id="vencimento" name="vencimento" type="text" v-model="bill.date_due | formatDate">\n          </div>\n          <div class="input-field col s6">\n          <label for="valor" class="active">Valor</label>\n            <input id="valor" name="valor" type="text" v-model="bill.value | formatNumber">\n          </div>\n        </div><!-- row -->\n\n        <div class="row">\n          <div class="col s6">\n            <label for="nomes" class="active">Nome</label>\n            <select id="nomes" name="nomes" v-model="bill.name | formatString" class="browser-default">\n              <option value="0" disabled selected>Escolha um nome</option>\n              <option v-for="o in names" value="{{o}}">{{o}}</option>\n            </select>\n          </div>\n          <div class="input-field col s6">\n            <input type="checkbox" v-model="bill.done" id="status">\n            <label for="status">Paga</label>\n          </div>\n        </div><!-- row -->\n        <div class="row">\n          <input v-if="formType == \'insert\'" type="submit" value="Enviar" class="btn">\n          <input v-else type="submit" value="Atualizar" class="btn">\n        </div>\n      </form>\n</div>\n\n\n  ',
@@ -54,7 +55,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 4 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -84,7 +85,7 @@ module.exports = {
         _this.$dispatch('change-info');
       });
 
-      billToDelete = null;
+      this.billToDelete = null;
     },
     modalDelete: function modalDelete(bill) {
       this.billToDelete = bill;
@@ -101,7 +102,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 5 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -163,11 +164,13 @@ module.exports = {
 };
 
 /***/ }),
-/* 6 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
+
+var BillClass = __webpack_require__(11).default;
 
 module.exports = {
   template: '\n\n  <div class="container">\n        <h4 v-if="formType == \'insert\'">Criar Conta</h4>\n        <h4 v-else>Editar Conta</h4>\n        <form name="form" @submit.prevent="submit">\n          <div class="row">\n            <div class="input-field col s6">\n              <label for="vencimento" class="active">Vencimento</label>\n              <input id="vencimento" name="vencimento" type="text" v-model="bill.date_due | formatDate">\n            </div>\n            <div class="input-field col s6">\n            <label for="valor" class="active">Valor</label>\n              <input id="valor" name="valor" type="text" v-model="bill.value | formatNumber">\n            </div>\n          </div><!-- row -->\n\n          <div class="row">\n            <div class="col s6">\n              <label for="nomes" class="active">Nome</label>\n              <select id="nomes" name="nomes" v-model="bill.name | formatString" class="browser-default">\n                <option value="0" disabled selected>Escolha um nome</option>\n                <option v-for="o in names" value="{{o}}">{{o}}</option>\n              </select>\n            </div>\n            <div class="input-field col s6">\n              <input type="checkbox" v-model="bill.done" id="status">\n              <label for="status">Recebida</label>\n            </div>\n          </div><!-- row -->\n          <div class="row">\n            <input v-if="formType == \'insert\'" type="submit" value="Enviar" class="btn">\n            <input v-else type="submit" value="Atualizar" class="btn">\n          </div>\n        </form>\n  </div>\n\n  ',
@@ -213,7 +216,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 7 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -260,7 +263,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 8 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -322,7 +325,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 9 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -374,7 +377,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 10 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -398,7 +401,62 @@ module.exports = {
 };
 
 /***/ }),
-/* 11 */,
+/* 10 */,
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var BillClass = function () {
+  function BillClass() {
+    var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+    _classCallCheck(this, BillClass);
+
+    this.date_due = '';
+    this.name = '';
+    this.value = 0;
+    this.done = false;
+
+    Object.assign(this, data);
+  }
+
+  _createClass(BillClass, [{
+    key: 'toJSON',
+    value: function toJSON() {
+      console.log(this.date_due);
+      return {
+        date_due: this.getDateDue(this.date_due).toISOString(),
+        name: this.name,
+        value: this.value,
+        done: this.done
+      };
+    }
+  }, {
+    key: 'getDateDue',
+    value: function getDateDue(date) {
+      if (!(date instanceof Date)) {
+        date = new Date(date);
+      }
+      return date;
+    }
+  }]);
+
+  return BillClass;
+}();
+
+exports.default = BillClass;
+
+/***/ }),
 /* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 

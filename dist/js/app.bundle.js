@@ -137,64 +137,12 @@
 /******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 11);
+/******/ 	return __webpack_require__(__webpack_require__.s = 10);
 /******/ })
 /************************************************************************/
-/******/ ([
-/* 0 */
-/***/ (function(module, exports, __webpack_require__) {
+/******/ ({
 
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var BillClass = exports.BillClass = function () {
-  function BillClass() {
-    var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
-    _classCallCheck(this, BillClass);
-
-    this.date_due = '';
-    this.name = '';
-    this.value = 0;
-    this.done = false;
-
-    Object.assign(this, data);
-  }
-
-  _createClass(BillClass, [{
-    key: 'toJSON',
-    value: function toJSON() {
-      console.log(this.date_due);
-      return {
-        date_due: this.getDateDue(this.date_due).toISOString(),
-        name: this.name,
-        value: this.value,
-        done: this.done
-      };
-    }
-  }, {
-    key: 'getDateDue',
-    value: function getDateDue(date) {
-      if (!(date instanceof Date)) {
-        date = new Date(date);
-      }
-      return date;
-    }
-  }]);
-
-  return BillClass;
-}();
-
-/***/ }),
-/* 1 */
+/***/ 0:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -308,7 +256,8 @@ Vue.filter('formatString', {
 });
 
 /***/ }),
-/* 2 */
+
+/***/ 1:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -325,15 +274,8 @@ window.Receive = Vue.resource('receive/bills{/id}', {}, {
 });
 
 /***/ }),
-/* 3 */,
-/* 4 */,
-/* 5 */,
-/* 6 */,
-/* 7 */,
-/* 8 */,
-/* 9 */,
-/* 10 */,
-/* 11 */
+
+/***/ 10:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -341,9 +283,8 @@ window.Receive = Vue.resource('receive/bills{/id}', {}, {
 
 __webpack_require__(0);
 __webpack_require__(1);
-__webpack_require__(2);
 
-__webpack_require__.e/* require */(0).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(5), __webpack_require__(4), __webpack_require__(3), __webpack_require__(8), __webpack_require__(7), __webpack_require__(6), __webpack_require__(9), __webpack_require__(10)]; (function (billPayComponent, billPayListComponent, billPayCreateComponent, billReceiveComponent, billReceiveListComponent, billReceiveCreateComponent, billComponent, dashboardComponent) {
+__webpack_require__.e/* require */(0).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(4), __webpack_require__(3), __webpack_require__(2), __webpack_require__(7), __webpack_require__(6), __webpack_require__(5), __webpack_require__(8), __webpack_require__(9)]; (function (billPayComponent, billPayListComponent, billPayCreateComponent, billReceiveComponent, billReceiveListComponent, billReceiveCreateComponent, billComponent, dashboardComponent) {
 
     var router = new VueRouter();
 
@@ -406,4 +347,5 @@ __webpack_require__.e/* require */(0).then(function() { var __WEBPACK_AMD_REQUIR
 }.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}).catch(__webpack_require__.oe);
 
 /***/ })
-/******/ ]);
+
+/******/ });

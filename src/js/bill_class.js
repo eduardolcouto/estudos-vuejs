@@ -1,4 +1,4 @@
-export class BillClass{
+export default class BillClass{
   constructor(data = {}){
     this.date_due = '';
     this.name = '';

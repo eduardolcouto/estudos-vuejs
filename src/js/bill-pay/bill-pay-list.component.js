@@ -80,13 +80,12 @@ module.exports = {
   },
   methods:{
     removeBill(){
-
         Receive.delete({id: this.billToDelete.id}).then(() => {
           this.bills.$remove(this.billToDelete);
           this.$dispatch('change-info');
         });
 
-        billToDelete = null;
+        this.billToDelete = null;
 
     },
     modalDelete(bill){

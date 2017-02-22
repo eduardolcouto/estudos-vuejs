@@ -1,4 +1,4 @@
-require('./bill_class');
+
 require('./filters');
 require('./resources');
 
