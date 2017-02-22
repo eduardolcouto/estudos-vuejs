@@ -49,15 +49,13 @@ module.exports = {
   <router-view></router-view>
 </main>
 
-
   `,
-  created(){
-    $(document).ready(function(){
+
+    ready(){
         $('.button-collapse').sideNav();
         $('.dropdown-button').dropdown();
         $('.collapsible').collapsible();
-    });
-  },
+    },
   methods:{
     carregarPagina(rota,colorBase){
       this.colorBase = colorBase;

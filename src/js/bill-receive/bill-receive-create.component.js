@@ -1,4 +1,4 @@
-let BillClass = require('../bill_class').default;
+let BillClass = require('../bill_class');
 
 module.exports = {
   template:`

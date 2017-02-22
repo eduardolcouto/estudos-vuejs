@@ -1,4 +1,5 @@
-
+require('../img/bg.jpg');
+require('../sass/app.scss');
 require('./filters');
 require('./resources');
 

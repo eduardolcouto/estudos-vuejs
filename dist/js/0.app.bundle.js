@@ -1,13 +1,20 @@
 webpackJsonp([0],[
 /* 0 */,
 /* 1 */,
-/* 2 */
+/* 2 */,
+/* 3 */,
+/* 4 */,
+/* 5 */,
+/* 6 */,
+/* 7 */,
+/* 8 */,
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var BillClass = __webpack_require__(11).default;
+var BillClass = __webpack_require__(36);
 
 module.exports = {
   template: '\n<div class="container">\n      <h4 v-if="formType == \'insert\'">Criar Conta</h4>\n      <h4 v-else>Editar Conta</h4>\n      <form name="form" @submit.prevent="submit">\n        <div class="row">\n          <div class="input-field col s6">\n            <label for="vencimento" class="active">Vencimento</label>\n            <input id="vencimento" name="vencimento" type="text" v-model="bill.date_due | formatDate">\n          </div>\n          <div class="input-field col s6">\n          <label for="valor" class="active">Valor</label>\n            <input id="valor" name="valor" type="text" v-model="bill.value | formatNumber">\n          </div>\n        </div><!-- row -->\n\n        <div class="row">\n          <div class="col s6">\n            <label for="nomes" class="active">Nome</label>\n            <select id="nomes" name="nomes" v-model="bill.name | formatString" class="browser-default">\n              <option value="0" disabled selected>Escolha um nome</option>\n              <option v-for="o in names" value="{{o}}">{{o}}</option>\n            </select>\n          </div>\n          <div class="input-field col s6">\n            <input type="checkbox" v-model="bill.done" id="status">\n            <label for="status">Paga</label>\n          </div>\n        </div><!-- row -->\n        <div class="row">\n          <input v-if="formType == \'insert\'" type="submit" value="Enviar" class="btn">\n          <input v-else type="submit" value="Atualizar" class="btn">\n        </div>\n      </form>\n</div>\n\n\n  ',
@@ -55,13 +62,13 @@ module.exports = {
 };
 
 /***/ }),
-/* 3 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var modalComponent = __webpack_require__(12);
+var modalComponent = __webpack_require__(37);
 
 module.exports = {
   components: {
@@ -102,7 +109,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 4 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -164,13 +171,13 @@ module.exports = {
 };
 
 /***/ }),
-/* 5 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var BillClass = __webpack_require__(11).default;
+var BillClass = __webpack_require__(36);
 
 module.exports = {
   template: '\n\n  <div class="container">\n        <h4 v-if="formType == \'insert\'">Criar Conta</h4>\n        <h4 v-else>Editar Conta</h4>\n        <form name="form" @submit.prevent="submit">\n          <div class="row">\n            <div class="input-field col s6">\n              <label for="vencimento" class="active">Vencimento</label>\n              <input id="vencimento" name="vencimento" type="text" v-model="bill.date_due | formatDate">\n            </div>\n            <div class="input-field col s6">\n            <label for="valor" class="active">Valor</label>\n              <input id="valor" name="valor" type="text" v-model="bill.value | formatNumber">\n            </div>\n          </div><!-- row -->\n\n          <div class="row">\n            <div class="col s6">\n              <label for="nomes" class="active">Nome</label>\n              <select id="nomes" name="nomes" v-model="bill.name | formatString" class="browser-default">\n                <option value="0" disabled selected>Escolha um nome</option>\n                <option v-for="o in names" value="{{o}}">{{o}}</option>\n              </select>\n            </div>\n            <div class="input-field col s6">\n              <input type="checkbox" v-model="bill.done" id="status">\n              <label for="status">Recebida</label>\n            </div>\n          </div><!-- row -->\n          <div class="row">\n            <input v-if="formType == \'insert\'" type="submit" value="Enviar" class="btn">\n            <input v-else type="submit" value="Atualizar" class="btn">\n          </div>\n        </form>\n  </div>\n\n  ',
@@ -216,13 +223,13 @@ module.exports = {
 };
 
 /***/ }),
-/* 6 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var modalComponent = __webpack_require__(12);
+var modalComponent = __webpack_require__(37);
 
 module.exports = {
   components: {
@@ -263,7 +270,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 7 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -325,7 +332,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 8 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -333,12 +340,11 @@ module.exports = {
 
 module.exports = {
   template: '\n<ul v-bind:id="o.id" class="dropdown-content" v-for="o in menusDropDown">\n  <li v-for="item in o.items">\n    <a v-link="{name: item.routeName}"> {{item.name}} </a>\n  </li>\n</ul>\n<header>\n  <nav class="top-nav" :class="colorBase">\n    <div class="">\n      <div class="nav-wrapper">\n        <a class="page-title right">Controle Financeiro</a>\n      </div>\n      <div class="container">\n        <a href="#" data-activates="nav-mobile" class="button-collapse full hide-on-large-only">\n          <i class="material-icons">menu</i>\n        </a>\n      </div>\n    </div>\n  </nav>\n<ul id="nav-mobile" class="side-nav fixed">\n  <li>\n    <div class="userView">\n      <div class="background">\n        <img src="dist/img/bg.jpg">\n      </div>\n      <a href="#!user"><img class="circle" src="http://www.gravatar.com/avatar/d82d96deac93f5fa1fb48cb4b3c75961.jpg"></a>\n      <a href="#!name"><span class="white-text name">Eduardo Couto</span></a>\n      <a href="#!email"><span class="white-text email">eduardo.lcouto@gmail.com</span></a>\n    </div>\n  </li>\n  <li>\n    <ul class="collapsible" data-collapsible="accordion">\n      <li v-for="menu in menuSideNav">\n        <div class="collapsible-header" v-bind:class="menu.colorBase"><i class="material-icons">{{menu.icon}}</i>{{menu.name}}</div>\n        <div class="collapsible-body"  v-for="subMenu in menu.subMenu">\n          <a  href="#" @click.prevent="carregarPagina(subMenu.routeName, menu.colorBase)" > {{subMenu.name}} </a>\n        </ul>\n      </li>\n      <!--<li>\n        <div class="collapsible-header"><i class="material-icons">assessment</i>Relat\xF3rio</div>\n        <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>\n      </li>-->\n    </ul>\n  </li>\n</ul>\n</header>\n<main>\n  <router-view></router-view>\n</main>\n\n\n  ',
-  created: function created() {
-    $(document).ready(function () {
-      $('.button-collapse').sideNav();
-      $('.dropdown-button').dropdown();
-      $('.collapsible').collapsible();
-    });
+
+  ready: function ready() {
+    $('.button-collapse').sideNav();
+    $('.dropdown-button').dropdown();
+    $('.collapsible').collapsible();
   },
 
   methods: {
@@ -377,7 +383,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 9 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -401,22 +407,36 @@ module.exports = {
 };
 
 /***/ }),
-/* 10 */,
-/* 11 */
+/* 17 */,
+/* 18 */,
+/* 19 */,
+/* 20 */,
+/* 21 */,
+/* 22 */,
+/* 23 */,
+/* 24 */,
+/* 25 */,
+/* 26 */,
+/* 27 */,
+/* 28 */,
+/* 29 */,
+/* 30 */,
+/* 31 */,
+/* 32 */,
+/* 33 */,
+/* 34 */,
+/* 35 */,
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var BillClass = function () {
+module.exports = function () {
   function BillClass() {
     var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
@@ -454,10 +474,8 @@ var BillClass = function () {
   return BillClass;
 }();
 
-exports.default = BillClass;
-
 /***/ }),
-/* 12 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
