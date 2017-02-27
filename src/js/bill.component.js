@@ -51,61 +51,100 @@ module.exports = {
 
   `,
 
-    ready(){
-        $('.button-collapse').sideNav();
-        $('.dropdown-button').dropdown();
-        $('.collapsible').collapsible();
-    },
-  methods:{
-    carregarPagina(rota,colorBase){
+  ready() {
+    $('.button-collapse').sideNav();
+    $('.dropdown-button').dropdown();
+    $('.collapsible').collapsible();
+  },
+  methods: {
+    carregarPagina(rota, colorBase) {
       this.colorBase = colorBase;
-      this.$router.go({name: rota});
+      this.$router.go({
+        name: rota
+      });
     }
   },
-  data(){
+  data() {
     return {
       colorBase: '',
-      menus:[
-        {name: 'Contas a Pagar', routeName:'bill-pay.list', dropdonwId: 'bill-pay'},
-        {name: 'Contas a Receber', routeName: 'bill-receive.list', dropdonwId: 'bill-receive'},
-      ],
-      menusDropDown:[
-        {
-          id: 'bill-pay', items:[
-            {id:0, name: 'Listar Contas', routeName:'bill-pay.list'},
-            {id:1, name: 'Criar Conta', routeName: 'bill-pay.create'},
-          ]
-        },
-        {
-          id: 'bill-receive', items:[
-            {id:0, name: 'Listar Contas', routeName:'bill-receive.list'},
-            {id:1, name: 'Criar Conta', routeName: 'bill-receive.create'},
-          ]
-        },
-      ],
-      menuSideNav:[
-        {
+      menus: [{
           name: 'Contas a Pagar',
-          routeName:'bill-pay.list',
+          routeName: 'bill-pay.list',
+          dropdonwId: 'bill-pay'
+        },
+        {
+          name: 'Contas a Receber',
+          routeName: 'bill-receive.list',
+          dropdonwId: 'bill-receive'
+        },
+      ],
+      menusDropDown: [{
+          id: 'bill-pay',
+          items: [{
+              id: 0,
+              name: 'Listar Contas',
+              routeName: 'bill-pay.list'
+            },
+            {
+              id: 1,
+              name: 'Criar Conta',
+              routeName: 'bill-pay.create'
+            },
+          ]
+        },
+        {
+          id: 'bill-receive',
+          items: [{
+              id: 0,
+              name: 'Listar Contas',
+              routeName: 'bill-receive.list'
+            },
+            {
+              id: 1,
+              name: 'Criar Conta',
+              routeName: 'bill-receive.create'
+            },
+          ]
+        },
+      ],
+      menuSideNav: [{
+          name: 'Contas a Pagar',
+          routeName: 'bill-pay.list',
           dropdonwId: 'bill-pay',
-          icon: 'call_made' ,
+          icon: 'call_made',
           colorBase: 'red darken-1',
-            active:  '',
-          subMenu:[
-            {id:0, name: 'Listar Contas', routeName:'bill-pay.list'},
-            {id:1, name: 'Criar Conta', routeName: 'bill-pay.create'}
-        ]},
+          active: '',
+          subMenu: [{
+              id: 0,
+              name: 'Listar Contas',
+              routeName: 'bill-pay.list'
+            },
+            {
+              id: 1,
+              name: 'Criar Conta',
+              routeName: 'bill-pay.create'
+            }
+          ]
+        },
         {
           name: 'Contas a Receber',
           routeName: 'bill-receive.list',
           dropdonwId: 'bill-receive',
-          icon: 'call_received' ,
+          icon: 'call_received',
           colorBase: 'green lighten-2',
-            active: 'active',
-          subMenu:[
-            {id:0, name: 'Listar Contas', routeName:'bill-receive.list'},
-            {id:1, name: 'Criar Conta', routeName: 'bill-receive.create'},
-        ]},
+          active: 'active',
+          subMenu: [{
+              id: 0,
+              name: 'Listar Contas',
+              routeName: 'bill-receive.list'
+            },
+            {
+              id: 1,
+              name: 'Criar Conta',
+              routeName: 'bill-receive.create'
+            },
+          ]
+        },
       ],
 
     };

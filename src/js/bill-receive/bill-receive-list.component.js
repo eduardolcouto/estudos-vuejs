@@ -51,7 +51,7 @@ module.exports = {
   </div><!-- section-->
 
   <modal :modal.id="modal">
-    <div slot="content">
+    <div slot="content v-if="billToDelete">">
       <div class="section"
         ><h4>Confirmação de exclusão</h4>
         <p>

@@ -51,7 +51,7 @@ module.exports = {
   </div><!-- section-->
 
   <modal :modal.id="modal">
-    <div slot="content">
+    <div slot="content" v-if="billToDelete">
       <div class="section"
         ><h4>Confirmação de exclusão</h4>
         <p>
@@ -80,12 +80,11 @@ module.exports = {
   },
   methods:{
     removeBill(){
-        Receive.delete({id: this.billToDelete.id}).then(() => {
+        Bill.delete({id: this.billToDelete.id}).then(() => {
           this.bills.$remove(this.billToDelete);
+          this.billToDelete = null;
           this.$dispatch('change-info');
-        });
-
-        this.billToDelete = null;
+        });        
 
     },
     modalDelete(bill){

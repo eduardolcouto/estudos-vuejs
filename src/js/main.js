@@ -1,7 +1,4 @@
-require('../img/bg.jpg');
-require('../sass/app.scss');
-require('./filters');
-require('./resources');
+require('./bootstrap');
 
 require(
     [   './bill-pay/bill-pay.component',
@@ -12,7 +9,7 @@ require(
         './bill-receive/bill-receive-create.component',
         './bill.component',
         './dashboard.component'
-    ],
+    ], 
     function (
               billPayComponent,
               billPayListComponent,
@@ -23,6 +20,7 @@ require(
               billComponent,
               dashboardComponent) {
 
+        let VueRouter = require('vue-router');
         let router = new VueRouter();
 
         router.map({
@@ -84,4 +82,4 @@ require(
         });
 
     }
-)
+);
