@@ -1,4 +1,6 @@
-module.exports = {
+import {BillPay} from '../resources';
+
+export default {
   template: `
 <div class="section">
   <div class="container">
@@ -54,13 +56,13 @@ module.exports = {
             this.status = count;
     },
     updateStatus(){
-      Bill.query().then((response) => {
+      BillPay.query().then((response) => {
         this.calculateStatus(response.data);
       });
     },
 
     updateTotal(){
-      Bill.total().then((response) => {
+      BillPay.total().then((response) => {
         this.total = response.data.total;
       });
     }

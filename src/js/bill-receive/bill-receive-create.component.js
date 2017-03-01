@@ -1,6 +1,7 @@
-let BillClass = require('../bill_class');
+import {BillReceive} from '../resources';
+import {BillClass} from '../bill_class';
 
-module.exports = {
+export default  {
   template:`
 
   <div class="container">
@@ -55,19 +56,19 @@ module.exports = {
     submit(){
         let data = this.bill.toJSON();
         if(this.formType == 'insert'){
-          Receive.save({},data).then(() => {
+          BillReceive.save({},data).then(() => {
                 this.$dispatch('change-info');
                 this.$router.go({name: 'bill-receive.list'});
               });
         }else{
-          Receive.update({id: this.bill.id}, data).then(() => {
+          BillReceive.update({id: this.bill.id}, data).then(() => {
               this.$dispatch('change-info');
               this.$router.go({name: 'bill-receive.list'});
             });
         }
       },
       getBill(id){
-        Receive.get({id: id}).then((response) => {
+        BillReceive.get({id: id}).then((response) => {
           this.bill = new BillClass(response.data);
         })
       }

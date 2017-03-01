@@ -81,7 +81,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "8d8d1e297e69e52e40d7"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "bd5db8202e74466dbbe2"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotMainModule = true; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -10617,11 +10617,33 @@ window.Vue = __webpack_require__(18);
 __webpack_require__(16);
 
 __webpack_require__(12);
-__webpack_require__(10);
 __webpack_require__(11);
+__webpack_require__(2);
 
 /***/ }),
-/* 2 */,
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Vue.http.options.root = 'http://127.0.0.1:8888/api';
+
+var BillPay = Vue.resource('pay/bills{/id}', {}, {
+  total: { method: 'GET', url: 'pay/bills/total' }
+});
+
+var BillReceive = Vue.resource('receive/bills{/id}', {}, {
+  total: { method: 'GET', url: 'receive/bills/total' }
+});
+
+exports.BillPay = BillPay;
+exports.BillReceive = BillReceive;
+
+/***/ }),
 /* 3 */,
 /* 4 */,
 /* 5 */,
@@ -10629,7 +10651,8 @@ __webpack_require__(11);
 /* 7 */,
 /* 8 */,
 /* 9 */,
-/* 10 */
+/* 10 */,
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10740,23 +10763,6 @@ Vue.filter('formatString', {
             return value.toLowerCase();
         }
     }
-});
-
-/***/ }),
-/* 11 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Vue.http.options.root = 'http://127.0.0.1:8888/api';
-
-window.Bill = Vue.resource('pay/bills{/id}', {}, {
-  total: { method: 'GET', url: 'pay/bills/total' }
-});
-
-window.Receive = Vue.resource('receive/bills{/id}', {}, {
-  total: { method: 'GET', url: 'receive/bills/total' }
 });
 
 /***/ }),
@@ -25207,7 +25213,7 @@ module.exports = __webpack_amd_options__;
 
 __webpack_require__(1);
 
-__webpack_require__.e/* require */(0).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(4), __webpack_require__(3), __webpack_require__(2), __webpack_require__(7), __webpack_require__(6), __webpack_require__(5), __webpack_require__(8), __webpack_require__(9)]; (function (billPayComponent, billPayListComponent, billPayCreateComponent, billReceiveComponent, billReceiveListComponent, billReceiveCreateComponent, billComponent, dashboardComponent) {
+__webpack_require__.e/* require */(0).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(5), __webpack_require__(4), __webpack_require__(3), __webpack_require__(8), __webpack_require__(7), __webpack_require__(6), __webpack_require__(9), __webpack_require__(10)]; (function (billPayComponent, billPayListComponent, billPayCreateComponent, billReceiveComponent, billReceiveListComponent, billReceiveCreateComponent, billComponent, dashboardComponent) {
 
     var VueRouter = __webpack_require__(17);
     var router = new VueRouter();

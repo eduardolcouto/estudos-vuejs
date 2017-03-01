@@ -1,6 +1,8 @@
-let modalComponent = require('../modal.component');
+import {BillReceive} from '../resources';
 
-module.exports = {
+import modalComponent from '../modal.component';
+
+export default  {
   components:{
     'modal' : modalComponent,
   },
@@ -83,7 +85,7 @@ module.exports = {
   methods:{
     removeBill(){
 
-        Receive.delete({id: this.billToDelete.id}).then(() => {
+        BillReceive.delete({id: this.billToDelete.id}).then(() => {
           this.bills.$remove(this.billToDelete);
           this.$dispatch('change-info');
         });
@@ -97,7 +99,7 @@ module.exports = {
     }
   },
   created(){
-    Receive.query().then((response) => {
+    BillReceive.query().then((response) => {
       this.bills = response.data;
     });
   }

@@ -1,11 +1,14 @@
 webpackJsonp([0],[
 /* 0 */,
 /* 1 */,
-/* 2 */
+/* 2 */,
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
+
+var _resources = __webpack_require__(2);
 
 var BillClass = __webpack_require__(21);
 
@@ -25,12 +28,12 @@ module.exports = {
 
       var data = this.bill.toJSON();
       if (this.formType == 'insert') {
-        Bill.save({}, data).then(function () {
+        _resources.BillPay.save({}, data).then(function () {
           _this.$dispatch('change-info');
           _this.$router.go({ name: 'bill-pay.list' });
         });
       } else {
-        Bill.update({ id: this.bill.id }, data).then(function () {
+        _resources.BillPay.update({ id: this.bill.id }, data).then(function () {
           _this.$dispatch('change-info');
           _this.$router.go({ name: 'bill-pay.list' });
         });
@@ -39,7 +42,7 @@ module.exports = {
     getBill: function getBill(id) {
       var _this2 = this;
 
-      Bill.get({ id: id }).then(function (response) {
+      _resources.BillPay.get({ id: id }).then(function (response) {
         _this2.bill = new BillClass(response.data);
       });
     }
@@ -55,11 +58,13 @@ module.exports = {
 };
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
+
+var _resources = __webpack_require__(2);
 
 var modalComponent = __webpack_require__(22);
 
@@ -80,7 +85,7 @@ module.exports = {
     removeBill: function removeBill() {
       var _this = this;
 
-      Bill.delete({ id: this.billToDelete.id }).then(function () {
+      _resources.BillPay.delete({ id: this.billToDelete.id }).then(function () {
         _this.bills.$remove(_this.billToDelete);
         _this.billToDelete = null;
         _this.$dispatch('change-info');
@@ -94,18 +99,20 @@ module.exports = {
   created: function created() {
     var _this2 = this;
 
-    Bill.query().then(function (response) {
+    _resources.BillPay.query().then(function (response) {
       _this2.bills = response.data;
     });
   }
 };
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
+
+var _resources = __webpack_require__(2);
 
 module.exports = {
   template: '\n<div class="section">\n  <div class="container">\n      <h4>{{ title }}</h4>\n      <div class="row">\n          <div class="col s6">\n              <div class="card hoverable" :class="{\'white black-text\': status === false, \'green white-text\': status === 0, \'red white-text \': status > 0}">\n                  <div class="card-content">\n                      <span class="card-title"><i class="material-icons">account_balance</i></span>\n                      <h5>\n                        {{ status | statusGeneral}}\n                      </h5>\n                   </div>\n               </div>\n           </div>\n\n          <div class="col s6">\n              <div class="card hoverable">\n                  <div class="card-content">\n                  <span class="card-title"><i class="material-icons">payment</i></span>\n                      <h5>\n                          {{total | formatNumber}}\n                       </h5>\n                  </div>\n              </div>\n           </div>\n      </div>\n  </div>\n</div>\n<div class="divider"></div>\n    <router-view></router-view>\n',
@@ -135,14 +142,14 @@ module.exports = {
     updateStatus: function updateStatus() {
       var _this = this;
 
-      Bill.query().then(function (response) {
+      _resources.BillPay.query().then(function (response) {
         _this.calculateStatus(response.data);
       });
     },
     updateTotal: function updateTotal() {
       var _this2 = this;
 
-      Bill.total().then(function (response) {
+      _resources.BillPay.total().then(function (response) {
         _this2.total = response.data.total;
       });
     }
@@ -163,7 +170,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -215,7 +222,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -262,7 +269,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -324,7 +331,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -421,7 +428,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -445,7 +452,6 @@ module.exports = {
 };
 
 /***/ }),
-/* 10 */,
 /* 11 */,
 /* 12 */,
 /* 13 */,

@@ -1,6 +1,9 @@
-let BillClass = require('../bill_class');
 
-module.exports = {
+import {BillPay} from '../resources';
+
+import {BillClass} from '../bill_class';
+
+export default  {
   template:`
 <div class="container">
       <h4 v-if="formType == 'insert'">Criar Conta</h4>
@@ -55,19 +58,19 @@ module.exports = {
     submit(){
         let data = this.bill.toJSON();
         if(this.formType == 'insert'){
-          Bill.save({},data).then(() => {
+          BillPay.save({},data).then(() => {
                 this.$dispatch('change-info');
                 this.$router.go({name: 'bill-pay.list'});
               });
         }else{
-          Bill.update({id: this.bill.id},data).then(() => {
+          BillPay.update({id: this.bill.id},data).then(() => {
               this.$dispatch('change-info');
               this.$router.go({name: 'bill-pay.list'});
             });
         }
       },
       getBill(id){
-        Bill.get({id: id}).then((response) => {
+        BillPay.get({id: id}).then((response) => {
           this.bill = new BillClass(response.data);
         });
       }

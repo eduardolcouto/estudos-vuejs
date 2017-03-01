@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   template: `
 <!-- Modal Structure -->
 <div :id="modal.id" class="modal">

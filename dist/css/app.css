@@ -5540,21 +5540,21 @@ button.btn-floating {
   display: none;
   will-change: opacity; }
 
-.modal-fixed-footer.modal {
+.modal.modal-fixed-footer {
   padding: 0;
   height: 70%; }
-  .modal-fixed-footer.modal .modal-content {
+  .modal.modal-fixed-footer .modal-content {
     position: absolute;
     height: calc(100% - 56px);
     max-height: 100%;
     width: 100%;
     overflow-y: auto; }
-  .modal-fixed-footer.modal .modal-footer {
+  .modal.modal-fixed-footer .modal-footer {
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     position: absolute;
     bottom: 0; }
 
-.bottom-sheet.modal {
+.modal.bottom-sheet {
   top: auto;
   bottom: -100%;
   margin: 0;
@@ -8043,9 +8043,6 @@ header, main, footer {
 @media only screen and (max-width: 992px) {
   header, main, footer {
     padding-left: 0; } }
-
-.modal {
-  max-height: 45%; }
 
 .top-nav {
   height: 127px; }
