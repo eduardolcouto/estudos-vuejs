@@ -1,1 +1,1 @@
-{"bills":[{"date_due":"2015-05-26T03:00:00.000Z","name":"conta de \u00e1gua","value":986,"done":false,"id":62574},{"date_due":"2016-11-12T03:00:00.000Z","name":"conta de luz","value":165,"done":true,"id":27739}]}
+{"bills":[{"date_due":"2015-05-26T03:00:00.000Z","name":"conta de \u00e1gua","value":986,"done":false,"id":62574},{"date_due":"2019-01-01T02:00:00.000Z","name":"conta de \u00e1gua","value":2500,"done":false,"id":19096},{"date_due":"2018-12-01T02:00:00.000Z","name":"conta de telefone","value":600,"done":false,"id":12014}]}

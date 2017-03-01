@@ -23,10 +23,7 @@ module.exports = {
 			{
 				test: /\.js$/,
 				exclude: /(node_modules|bower_components)/,
-				loader: 'babel-loader',
-				query:{
-					presets:['es2015']
-				}
+				loader: 'babel-loader'
 			},
 			{
 				test: /\.(woff|woff2|ttf|svg|eot)$/,
@@ -37,9 +34,10 @@ module.exports = {
 				loader: extractCSS.extract(['css-loader','sass-loader'])
 			},
 			{
-				test: /\.(jpg|png|gif)$/,
-				loader: 'file-loader'
+				test: /\.vue$/,
+				loader: 'vue-loader'
 			}
+
 		]
 	},
 	devServer:{
